@@ -13,7 +13,11 @@ How To Run:
 
 
 Authors:
+
 Aristotelis-Angelos Papadopoulos: aristotp@usc.edu
+
 Collin Purcell					: collinpu@usc.edu
+
 Devershi Purohit				: dupurohi@usc.edu
+
 Ishank Mishra					: imishra@usc.edu 
