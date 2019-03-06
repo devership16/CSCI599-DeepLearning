@@ -1,0 +1,1 @@
+This folder is meant to store datasets, images, model checkpoints, pre-trained models, and results.
