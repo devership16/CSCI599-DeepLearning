@@ -9,11 +9,11 @@ edges. Graphical databases are ubiquitous and often consist of hundreds of milli
 
 Our research contribution in alignment to this is two-fold. First, we propose a Graph-Based Classification Model that uses nodal features as well as the structure of a node’s local sub-graph to predict links between graph nodes. Second, we propose that our model can be implemented as a generalized classification model capable of predicting links for a variety of graphical data. The basic idea behind our model is utilizing modern deep learning techniques to learn relational information from local sub-graphs and use it to predict the relationship between the target nodes.
 
+__________________________________________________________________________________________________________________________________
 How To Run:
 
-
+___________________________________________________________________________________________________________________________________
 Authors:
-
 Aristotelis-Angelos Papadopoulos: aristotp@usc.edu
 
 Collin Purcell					: collinpu@usc.edu
