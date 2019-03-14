@@ -34,9 +34,9 @@ public class Annoy {
 	@Description("example.annoy(filename, dimension, indextype (angular or euclidean), query item id)")
 	public List<Integer> annoy(
 			@Name("filename") String indexPath, 
-			@Name("dimension") int dimension,
+			@Name("dimension") String dim,
 			@Name("indextype") String indextype, 
-			@Name("itemId") int queryItem) throws IOException {
+			@Name("itemId") String item) throws IOException {
 
 		IndexType indexType = null; // 2
 		if (indextype.toLowerCase().equals("angular"))
@@ -45,25 +45,27 @@ public class Annoy {
 			indexType = IndexType.EUCLIDEAN;
 		else
 			throw new RuntimeException("wrong index type specified");
-
+		
+		int dimension = Integer.parseInt(dim);
+		int queryItem = Integer.parseInt(item);
 		ANNIndex annIndex = new ANNIndex(dimension, indexPath, indexType);
 
 		// input vector
 		float[] u = annIndex.getItemVector(queryItem);
-		System.out.printf("vector[%d]: ", queryItem);
+//		System.out.printf("vector[%d]: ", queryItem);
 
-		for (float x : u) {
-			System.out.printf("%2.2f ", x);
-		}
-		System.out.printf("\n");
+//		for (float x : u) {
+//			System.out.printf("%2.2f ", x);
+//		}
+//		System.out.printf("\n");
 
 		List<Integer> nearestNeighbors = annIndex.getNearest(u, 10);
 
-		for (int nn : nearestNeighbors) {
-			float[] v = annIndex.getItemVector(nn);
-			System.out.printf("%d %d %f\n", queryItem, nn,
-					(indexType == IndexType.ANGULAR) ? ANNIndex.cosineMargin(u, v) : euclideanDistance(u, v));
-		}
+//		for (int nn : nearestNeighbors) {
+//			float[] v = annIndex.getItemVector(nn);
+//			System.out.printf("%d %d %f\n", queryItem, nn,
+//					(indexType == IndexType.ANGULAR) ? ANNIndex.cosineMargin(u, v) : euclideanDistance(u, v));
+//		}
 		
 		annIndex.close();
 
