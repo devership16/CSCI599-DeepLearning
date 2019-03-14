@@ -1,8 +1,12 @@
 import jellyfish
 import time
+from difflib import SequenceMatcher
 
 def getStringSimilarity(s1, s2):
     return jellyfish.jaro_winkler(s1, s2)
+
+def getStringsimilarity_difflib(s1,s2):
+    return SequenceMatcher(None, s1, s2).ratio()
 
 def getInputData(path):
     
@@ -38,12 +42,18 @@ def getMostSimilar(data):
             if i==j or name1==name2:
                 continue
             
-            sim = getStringSimilarity(name1, name2) 
+            sim1 = getStringSimilarity(name1, name2) 
+#             sim2 = getStringsimilarity_difflib(name1, name2)
+            
+            sim = sim1
+            
             if sim > mostSimilar[name1][1]:
                 mostSimilar[name1][1] = sim
                 mostSimilar[name1]=[name2, sim]
     
     return mostSimilar
+
+
 
 if __name__=='__main__':   
     
@@ -53,7 +63,7 @@ if __name__=='__main__':
     
     data = getInputData(inPath+"names.txt")
     mostSimilar = getMostSimilar(data)
-    
+    print(mostSimilar[:10])
     print ("\nRun time: "+ str(time.time()-start)+" seconds" )  
     printResults(outPath + "mostSimilarName.txt", mostSimilar)
     
