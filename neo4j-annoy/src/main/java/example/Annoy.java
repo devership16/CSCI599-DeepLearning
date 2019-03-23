@@ -31,11 +31,12 @@ public class Annoy {
 	}
 
 	@UserFunction
-	@Description("example.annoy(filename, dimension, indextype (angular or euclidean), query item id)")
+	@Description("example.annoy(filename, dimension, indextype (angular or euclidean), numNeighbors, query item id)")
 	public List<Integer> annoy(
 			@Name("filename") String indexPath, 
 			@Name("dimension") String dim,
 			@Name("indextype") String indextype, 
+			@Name("numNeighbors") String numNei, 
 			@Name("itemId") String item) throws IOException {
 
 		IndexType indexType = null; // 2
@@ -48,25 +49,37 @@ public class Annoy {
 		
 		int dimension = Integer.parseInt(dim);
 		int queryItem = Integer.parseInt(item);
+		
+//		long startTime = System.currentTimeMillis();
 		ANNIndex annIndex = new ANNIndex(dimension, indexPath, indexType);
-
+//		long constructorTime = System.currentTimeMillis();
+		
 		// input vector
 		float[] u = annIndex.getItemVector(queryItem);
+/*		long getItemVectorTime = System.currentTimeMillis();
 //		System.out.printf("vector[%d]: ", queryItem);
-
+//
 //		for (float x : u) {
 //			System.out.printf("%2.2f ", x);
 //		}
 //		System.out.printf("\n");
-
-		List<Integer> nearestNeighbors = annIndex.getNearest(u, 10);
-
-//		for (int nn : nearestNeighbors) {
-//			float[] v = annIndex.getItemVector(nn);
-//			System.out.printf("%d %d %f\n", queryItem, nn,
-//					(indexType == IndexType.ANGULAR) ? ANNIndex.cosineMargin(u, v) : euclideanDistance(u, v));
-//		}
+*/
 		
+		int numNeighbors = Integer.parseInt(numNei);
+		List<Integer> nearestNeighbors = annIndex.getNearest(u, numNeighbors);
+/*		long endTime = System.currentTimeMillis();
+
+
+		for (int nn : nearestNeighbors) {
+			float[] v = annIndex.getItemVector(nn);
+			System.out.printf("%d %d %f\n", queryItem, nn,
+					(indexType == IndexType.ANGULAR) ? ANNIndex.cosineMargin(u, v) : euclideanDistance(u, v));
+		}
+
+		nearestNeighbors.add(Math.toIntExact(constructorTime - startTime));
+		nearestNeighbors.add(Math.toIntExact(getItemVectorTime - constructorTime));
+		nearestNeighbors.add(Math.toIntExact(endTime - getItemVectorTime));
+*/
 		annIndex.close();
 
 		return nearestNeighbors;
