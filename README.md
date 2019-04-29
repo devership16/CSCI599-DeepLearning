@@ -44,8 +44,7 @@ neural network module for relational reasoning. In Advances in Neural Informatio
 5. V. Garcia and J. Bruna. Few-shot learning with graph neural networks. In International Conference on
 Learning Representations (ICLR), 2018.
 6. A. Bordes, N. Usunier, A. Garcia-Duran, J. Weston, and O. Yakhnenko. Translating embeddings for
-modeling multi-relational data. In Advances in Neural Information Processing Systems, pages 2787–2795,
-2013.
+modeling multi-relational data. In Advances in Neural Information Processing Systems, pages 2787–2795, 2013.
 7. T. Hamaguchi, H. Oiwa, M. Shimbo, and Y. Matsumoto. Knowledge transfer for out-of-knowledge-base
 entities: A graph neural network approach. In International Joint Conference on Artificial Intelligence
 (IJCAI), 2017.
