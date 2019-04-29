@@ -32,6 +32,13 @@ the spirit of [8, 7], our main scope in this project is the design of an edge-fo
 order to predict the existence of an edge between two nodes as well as its corresponding label.
 
 
+## References
+1. P. W. Battaglia et al. Relational inductive biases, deep learning, and graph networks. arXiv preprint arXiv:
+1806.01261, 2018.
+2. M. Gori, G. Monfardini, and F. Scarcelli. A new model for learning in graph domains. In International
+Joint Conference on Neural Networks, 2005.
+
+
 __________________________________________________________________________________________________________________________________
 How To Run:
 
