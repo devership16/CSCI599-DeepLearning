@@ -35,6 +35,10 @@ order to predict the existence of an edge between two nodes as well as its corre
 ## 3. Dataset 
 We have used a combined dataset consisting of Bloomberg Bankruptcy Data for Companies (Year: 2009-2019) and a graph dataset containing approximately 6 million nodes (Person, Organizations, etc) with 10 million relationships.
 
+<p align="center">
+    <img src="figure/GraphExample.png" height="350"/>
+</p>
+
 
 ## References
 1. P. W. Battaglia et al. Relational inductive biases, deep learning, and graph networks. arXiv preprint arXiv:
