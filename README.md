@@ -1,5 +1,4 @@
-# CSCI599-DeepLearning
-# Project Title: Deep Link Prediction for Graphical Database
+# CSCI599-DeepLearning: Deep Link Prediction for Graphical Database
 
 Abstract:
 
