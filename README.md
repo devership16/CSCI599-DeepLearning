@@ -9,19 +9,19 @@ In order to address the aforementioned problem, we followed two distinct approac
 ## 2. Related Work
 Neural networks that operate on graphs, and structure their computations accordingly, have been
 developed and explored extensively for more than a decade under the umbrella of “graph neural
-networks” [5], but have grown rapidly in scope and popularity in recent years.
+networks” [2], but have grown rapidly in scope and popularity in recent years.
 
-Models in the graph neural network family, e.g. [9], have been explored in a diverse range of problem
+Models in the graph neural network family, e.g. [3], have been explored in a diverse range of problem
 domains, across supervised, semi-supervised, unsupervised, and reinforcement learning settings.
 These models have been effective at tasks thought to have rich relational structure, such as visual
-scene understanding tasks [10] and few-shot learning [3]. They have also been extensively used to
-reason about knowledge graphs [2, 6]. For more applications of graph neural network models, see [1]
+scene understanding tasks [4] and few-shot learning [5]. They have also been extensively used to
+reason about knowledge graphs [6, 7]. For more applications of graph neural network models, see [1]
 and references therein.
 
-Recently, [4] introduced the message-passing neural network (MPNN), which unified various previous
+Recently, [8] introduced the message-passing neural network (MPNN), which unified various previous
 graph neural network and graph convolutional network approaches by sequentially updating edge
 attributes, node attributes and global attributes of the graph and transmitting the information after
-each update. In a similar vein, [11] introduced the non-local neural network (NLNN), which unified
+each update. In a similar vein, [9] introduced the non-local neural network (NLNN), which unified
 various “self-attention”-style methods by analogy to methods from computer vision and graphical
 models for capturing long range dependencies in signals.
 
@@ -37,6 +37,28 @@ order to predict the existence of an edge between two nodes as well as its corre
 1806.01261, 2018.
 2. M. Gori, G. Monfardini, and F. Scarcelli. A new model for learning in graph domains. In International
 Joint Conference on Neural Networks, 2005.
+3. Y. Li, D. Tarlow, M. Brockschmidt, and R. Zemel. Gated graph sequence neural networks. In International
+Conference on Learning Representations (ICLR), 2016.
+4. A. Santoro, D. Raposo, D. G. Barrett, M. Malinowski, R. Pascanu, P. Battagli, and T. Lillicrap. A simple
+neural network module for relational reasoning. In Advances in Neural Information Processing Systems,
+2017.
+5. V. Garcia and J. Bruna. Few-shot learning with graph neural networks. In International Conference on
+Learning Representations (ICLR), 2018.
+6. A. Bordes, N. Usunier, A. Garcia-Duran, J. Weston, and O. Yakhnenko. Translating embeddings for
+modeling multi-relational data. In Advances in Neural Information Processing Systems, pages 2787–2795,
+2013.
+7. T. Hamaguchi, H. Oiwa, M. Shimbo, and Y. Matsumoto. Knowledge transfer for out-of-knowledge-base
+entities: A graph neural network approach. In International Joint Conference on Artificial Intelligence
+(IJCAI), 2017.
+8. J. Gilmer, S. S. Schoenholz, P. F. Riley, O. Vinyals, and G. E. Dahl. Neural message passing for quantum
+chemistry. arXiv preprint arXiv: 1704.01212, 2017.
+9. X. Wang, R. Girshick, A. Gupta, and K. He. Non-local neural networks. In Proceedings of the Conference
+on Computer Vision and Pattern Recognition (CVPR), 2017.
+10. J. Hamrick, K. Allen, V. Bapst, T. Zhu, K. McKee, J. Tenenbaum, and P. Battaglia. Relational inductive
+bias for physical construction in humans and machines. In Proceedings of the 40th Annual Conference of
+the Cognitive Science Society, 2018.
+11. T. Kipf, E. Fetaya, K.-C. Wang, M. Welling, and R. Zemel. Neural relational inference for interacting
+systems. In Proceedings of the International Conference on Machine Learning (ICML), 2018.
 
 
 __________________________________________________________________________________________________________________________________
