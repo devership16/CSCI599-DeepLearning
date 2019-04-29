@@ -32,6 +32,10 @@ the spirit of [10,11], our main scope in this project is the design of an edge-f
 order to predict the existence of an edge between two nodes as well as its corresponding label.
 
 
+## 3. Dataset 
+We have used a combined dataset consisting of Bloomberg Bankruptcy Data for Companies (Year: 2009-2019) and a graph dataset containing approximately 6 million nodes (Person, Organizations, etc) with 10 million relationships.
+
+
 ## References
 1. P. W. Battaglia et al. Relational inductive biases, deep learning, and graph networks. arXiv preprint arXiv:
 1806.01261, 2018.
