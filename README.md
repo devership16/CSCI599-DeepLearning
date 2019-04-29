@@ -15,7 +15,7 @@ Models in the graph neural network family, e.g. [3], have been explored in a div
 domains, across supervised, semi-supervised, unsupervised, and reinforcement learning settings.
 These models have been effective at tasks thought to have rich relational structure, such as visual
 scene understanding tasks [4] and few-shot learning [5]. They have also been extensively used to
-reason about knowledge graphs [6, 7]. For more applications of graph neural network models, see [1]
+reason about knowledge graphs [6,7]. For more applications of graph neural network models, see [1]
 and references therein.
 
 Recently, [8] introduced the message-passing neural network (MPNN), which unified various previous
@@ -28,7 +28,7 @@ models for capturing long range dependencies in signals.
 Graph neural network models usually consist of Graph Network (GN) blocks and can be divided into
 three main categories depending on the task that needs to be served. Node-focused and graph-focused
 GNs use the nodes attributes and the global attributes as outputs respectively. On the other hand, in
-the spirit of [8, 7], our main scope in this project is the design of an edge-focused neural network in
+the spirit of [10,11], our main scope in this project is the design of an edge-focused neural network in
 order to predict the existence of an edge between two nodes as well as its corresponding label.
 
 
