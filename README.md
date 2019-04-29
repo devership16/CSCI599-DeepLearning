@@ -39,7 +39,7 @@ order to predict the existence of an edge between two nodes as well as its corre
 Joint Conference on Neural Networks, 2005.
 3. Y. Li, D. Tarlow, M. Brockschmidt, and R. Zemel. Gated graph sequence neural networks. In International
 Conference on Learning Representations (ICLR), 2016.
-4. A. Santoro, D. Raposo, D. G. Barrett, M. Malinowski, R. Pascanu, P. Battagli, and T. Lillicrap. A simple
+4. A. Santoro, D. Raposo, D. G. Barrett, M. Malinowski, R. Pascanu, P. Battaglia, and T. Lillicrap. A simple
 neural network module for relational reasoning. In Advances in Neural Information Processing Systems, 2017.
 5. V. Garcia and J. Bruna. Few-shot learning with graph neural networks. In International Conference on
 Learning Representations (ICLR), 2018.
