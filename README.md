@@ -40,7 +40,7 @@ We have used a combined dataset consisting of Bloomberg Bankruptcy Data for Comp
 </p>
 
 Our graph dataset contains 8 types of nodes and 14 types of edges. Our goal was to initially create a super-node called Bankruptcy node and connect all US companies which filed bankruptcy according to the Bloomberg financial data. Then, by using the Image Segmentation model approach and the GCNN approach, we tried to predict the existence of an edge between a Company node and the Bankruptcy super-node.
-It is worth mentioning the high class-imbalance problem we faced since the graph dataset contained $>600,000$ companies out of which only $~3,500$ companies had filed bankruptcy according to the collected Bloomberg financial data. 
+It is worth mentioning the high class-imbalance problem we faced since the graph dataset contained $$>600,000$$ companies out of which only $$~3,500$$ companies had filed bankruptcy according to the collected Bloomberg financial data. 
 
 
 ## References
