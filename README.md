@@ -62,7 +62,7 @@ We describe the both the encoder and decoder in detail
 The input to the encoder is the nodal feature vectors $$h_i$$, and the graph $$G = (V, R)$$ with nodes $$v_i \in V$$ and labeled edges $$(v_i, r, v_j)$$ where $$r \in R$$ is an edge type.  The output is a d-dimensional embedding $$h_{i}^{k+1}$$ for each node. 
 
 <p align="center">
-    <img src="figure/GCN.JPG"/>
+    <img src="figure/GCN.JPG" height="450"/>
 </p>
 
 For a given node, the model takes into account the feature vector of its first-order neighbors. Since each neighbor can be of different node type and can have different edge label, we have a different neural network architecture for each node. Each node type can have different lengths of embeddings; therefore, it is important that each edge type has a different set of weights. Note, an edge type is different if the node types are reversed. The convolution operators the we define in the encoder uses these weights depending on the neighbors and edge types. On successive application of these convolution operators, we essentially convolve across a K-hop distance in the graph for each neighbor. In other words, each node’s embeddings would have been formed using the information passed from all it’s Kth-order neighbors, while taking into account the different edge types *(Schlichtkrull et al., 2017)*. A single convolution on the neural network takes the following form 
