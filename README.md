@@ -126,9 +126,9 @@ We ran the Image segmentation model for the whole data-set and observed the foll
 | SegNet           	| 0.9757        | 0.6299        | 0.3571       	| **0.43**      |
 **NOTE:** AURPRC - Average Precision Score
 
-<p align="center">
-    <img src="figure/SegNet_PRC.jpeg" height="150"/>
-    <img src="figure/SegNet_all.jpeg" height="150"/>
+<p align="left">
+    <img src="figure/SegNet_PRC.jpeg" height="250"/>
+    <img src="figure/SegNet_all.jpeg" height="250"/>
 </p>
 
 
