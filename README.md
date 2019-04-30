@@ -84,6 +84,10 @@ The decoder is a rank-d DEDICOM tensor factorization of a 3-way tensor (Nickel e
 
 Here, $$R$$ is a trainable weight matrix that models the global variations between the two node types $$i$$ and $$j$$. This parameter is shared between all the edge types corresponding to the node types. The other parameter is $$D_r$$, a diagonal matrix, which are used to map local interactions for each edge type $$r$$. They model the importance of each dimension in the node embeddings towards predicting the existence of an edge type $$r$$. 
 
+<p align="center">
+    <img src="figure/GCNDecoder.JPG"/>
+</p>
+
 #### GCNN Training  
 The trainable parameters of the model are 
 - weight matrices for each edge type $$W_r$$
