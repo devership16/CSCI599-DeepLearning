@@ -159,28 +159,6 @@ We ran our GCN model for graphs with a different number of total nodes(10K, 20K,
 
 
 
-
-   **Results of GCN Model for the Bankruptcy Edge (Went_Bankrupt)**
-
-
-| Edge Type			| AUPRC_10K 	| AUPRC_20K 	| AUPRC_25K 	| **AUPRC_30K** 	|
-|:-----------------	|:-----------	|:-----------	|:-----------	|:--------------	|
-| Went_Bankrupt   	| 0         	| 0.4906    	| 0.62563   	| **0.73012**   	|
-
-
-**NOTE:** AURPRC - Average Precision Score
-
-<p align="center">
-    <img src="figure/GCN_AUPRC_Bkrpt.PNG" height="350"/>
-</p>
-
-
-
-
-
-
-
-
    **Results of GCN Model for all edge types (bi-directional) in the Graph**   
    
    
@@ -189,7 +167,7 @@ We ran our GCN model for graphs with a different number of total nodes(10K, 20K,
    
    
    
-| Edge Type          	| AUPRC_10K 	| AUPRC_20K 	| AUPRC_25K 	| AUPRC_30K 	|
+| Edge Type          	| AUPRC_10K 	| AUPRC_20K 	| AUPRC_25K 	| **AUPRC_30K** |
 |:--------------------	|:-----------	|:-----------	|:-----------	|:-----------	|
 | Employs            	| 0.6076    	| 0.6782    	| 0.70031   	| 0.69323   	|
 | Employed           	| 0.56125   	| 0.6083    	| 0.60821   	| 0.62838   	|
@@ -201,7 +179,7 @@ We ran our GCN model for graphs with a different number of total nodes(10K, 20K,
 | Was_Invested_In_By 	| 0.80587   	| 0.9489    	| 0.93843   	| 0.90202   	|
 | Acquired           	| 0.78444   	| 0.9886    	| 0.97656   	| 0.99003   	|
 | Was_Invested_In_By 	| 0.74629   	| 0.9259    	| 0.92427   	| 0.93148   	|
-| Went_Bankrupt      	| 0         	| 0.4906    	| 0.62563   	| 0.73012   	|
+| **Went_Bankrupt**     | **0**         | **0.4906**    | **0.62563**   | **0.73012**   |
 
 
 
@@ -212,9 +190,17 @@ We ran our GCN model for graphs with a different number of total nodes(10K, 20K,
 
 **NOTE:** AURPRC - Average Precision Score
 
-<p align="center">
-    <img src="figure/GCN_AUPRC_all.PNG" height="350"/>
-</p>
+
+
+
+
+AUPRC Score for Went_BankruptEdge             |  AUPRC Score for all Edge Types
+:-------------------------:|:-------------------------:
+![](figure/GCN_AUPRC_Bkrpt.PNG)  |  ![](figure/GCN_AUPRC_all.PNG)
+
+
+
+
 
 We can observe that the average precision score for edge types increases as the number of nodes in the graph increases. Also, the GCN model(**AUPRC: 0.73**) for a partial sample (30K nodes) achieves a better average precision score compared to the SegNet model(**AUPRC:0.43**) running on the complete dataset. We can also observe that the GCN model avoids the issue of sparsity in adjacency matrices faced by the SegNet model, by considering only connected neighbors in the graph. The GCN model also leverages the graphical structure of our data-set by incorporating nodal features for the nodes and hence improving the results.
 
