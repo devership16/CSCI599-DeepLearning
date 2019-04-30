@@ -262,10 +262,11 @@ bias for physical construction in humans and machines. In Proceedings of the 40t
 the Cognitive Science Society, 2018.
 11. T. Kipf, E. Fetaya, K.-C. Wang, M. Welling, and R. Zemel. Neural relational inference for interacting
 systems. In Proceedings of the International Conference on Machine Learning (ICML), 2018.
-12. Schlichtkrull,M. et al. (2017) Modeling relational data with graph convolutional networks. arXiv: 1703.06103.
-13. Nickel,M. et al. (2011) A three-way model for collective learning on multi-relational data. In ICML, Vol. 11, pp. 809–816. 
-14. Trouillon,T. et al. (2016) Complex embeddings for simple link prediction. In ICML., 33, 2071–2080.
-15. Glorot,X. and Bengio,Y. (2010) Understanding the difficulty of training deep feedforward neural networks. In AISTATS, Vol. 13. pp. 249–256.
+12. M. Zitnik, M. Agrawal, and J. Leskovec. 2018. Modeling polypharmacy side effects with graph convolutional networks. Bioinformatics (2018)
+13. Schlichtkrull,M. et al. (2017) Modeling relational data with graph convolutional networks. arXiv: 1703.06103.
+14. Nickel,M. et al. (2011) A three-way model for collective learning on multi-relational data. In ICML, Vol. 11, pp. 809–816. 
+15. Trouillon,T. et al. (2016) Complex embeddings for simple link prediction. In ICML., 33, 2071–2080.
+16. Glorot,X. and Bengio,Y. (2010) Understanding the difficulty of training deep feedforward neural networks. In AISTATS, Vol. 13. pp. 249–256.
 
 
 
