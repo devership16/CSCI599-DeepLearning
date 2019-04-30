@@ -137,9 +137,9 @@ We ran the Image segmentation model for the whole data-set and observed the foll
 
 
 
-olarized dark             |  Solarized Ocean
+Precision-Recall Curve             |  Heat Map for all Edge Types
 :-------------------------:|:-------------------------:
-![](figure/SegNet_PRC.jpeg)  |  ![](SegNet_PRC_all.jpeg)
+![](figure/SegNet_PRC.jpeg)  |  ![](figure/SegNet_all.jpeg)
 
 
 
