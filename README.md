@@ -45,9 +45,9 @@ It is worth mentioning the high class-imbalance problem we faced since the graph
 
 ## Approaches 
 
-#### I. Image Segmenatation Model
+### I. Image Segmenatation Model
 
-#### II. Graph Convolutional Neural Network Model
+### II. Graph Convolutional Neural Network Model
 
 Our approach to building a model using Graph Convolutional Neural Network (GCNN) to solve the multi-relational link prediction task in a multimodal finance graph had to take care of an important observation relating to the nature of the dataset. There is a huge variation in the number node pairs that the data set contains corresponding to each edge type. Therefore, it becomes important that we develop an end-to-end approach such that the model shares the parameters from different edge types. 
 
@@ -60,7 +60,7 @@ In our approach, we build a non-linear, multi-layer neural network model designe
 We built an end-to-end model where the node embeddings are optimized jointly along with tensor factorization
 We describe the both the encoder and decoder in detail
 
-**GCNN Encoder**
+#### GCNN Encoder
 
 
 The input to the encoder is the nodal feature vectors $$h_i$$, and the graph $$G = (V, R)$$ with nodes $$v_i~ \epsilon ~V$$ and labeled edges $$(v_i, r, v_j)$$ where $$r~ \epsilon ~R$$ is an edge type.  The output is a d-dimensional embedding $$h_{i}^{k+1}$$ for each node. 
@@ -70,6 +70,21 @@ For a given node, the model takes into account the feature vector of its first-o
 ### $$h_{i}^{k+1} = \phi(\sum_r \sum_{j \epsilon N_r^i} c_r^{ij} W_r^k h_j^k + c_r^i h_i^k)$$
 
 Where $$h_i^k$$ the embedding of node $$v_i$$ in the kth layer with a dimensionality $$d^k$$, r is an edge type and $$W_k^r$$ is a weight/parameter matrix corresponding to it, $$\phi$$ represents a non-linear activation function, $$c_r^{ij}$$ are normalization constants. We build a two-layer model by stacking two layers of these. The input to the first layer is the node feature vectors or one-hot vectors if the features are not present.
+
+
+#### GCNN Decoder
+
+
+The input to the decoder is a pair of node embeddings that we want to decode. We treat each edge label differently i.e. we have a function $$g$$ that scores how likely it is that two nodes $$v_i$$ and $$v_j$$ have an edge type $$r$$ between them. 
+
+### $$p_r^{ij} = \sigma (g(v_i, r, v_j)) $$
+
+The decoder is a rank-d DEDICOM tensor factorization of a 3-way tensor (Nickel et al., 2011; Trouillon et al., 2016). We take the embeddings of two nodes produced by the encoder, $$z_i$$ and $$z_j$$, using which the decoder then predicts if an edge type $$r$$ exists between the nodes.
+
+### $$g(v_i, r, v_j) = z_i^T D_r R D_r Z_j $$
+
+Here, $$R$$ is a trainable weight matrix that models the global variations between the two node types $$i$$ and $$j$$. This parameter is shared between all the edge types corresponding to the node types. The other parameter is $$D_r$$, a diagonal matrix, which are used to map local interactions for each edge type $$r$$. They model the importance of each dimension in the node embeddings towards predicting the existence of an edge type $$r$$. 
+
 
 ## Results
 **I. Image Segmentation Model (SegNet):**
