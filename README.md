@@ -39,6 +39,7 @@ We have used a combined dataset consisting of Bloomberg Bankruptcy Data for Comp
 
 <p align="center">
     <img src="figure/GraphExample.png" height="350"/>
+    <p align="center">Fig 1: Example sub-graph containing company, people, funding rounds, and product areas. Notice the highly interconnected nature of the nodes and variety of node types. </p>
 </p>
 
 Our graph dataset contains 8 types of nodes and 14 types of edges. Our goal was to initially create a super-node called Bankruptcy node and connect all US companies which filed bankruptcy according to the Bloomberg financial data. Then, by using the Image Segmentation model approach and the GCNN approach, we tried to predict the existence of an edge between a Company node and the Bankruptcy super-node.
