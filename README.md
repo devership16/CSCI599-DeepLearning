@@ -141,11 +141,15 @@ We ran the Image segmentation model for the whole data-set and observed the foll
 
 
 
-Precision-Recall Curve             |  Heat Map for all Edge Types
-:-------------------------:|:-------------------------:
-![](figure/SegNet_PRC.jpeg)  |  ![](figure/SegNet_all.jpeg)
 
-
+<p align="center">
+    <img src="figure/SegNet_PRC.jpeg" height="250"/>
+    <p align="center">Fig 5. Precision-Recall Curve for the SegNet Model </p>
+</p>
+<p align="center">
+    <img src="figure/SegNet_all.jpeg" height="450"/>
+    <p align="center">Fig 6. Recall distrubution for all edge types </p>
+</p>
 
 
 
@@ -196,13 +200,18 @@ We ran our GCN model for graphs with a different number of total nodes(10K, 20K,
 
 
 
-AUPRC Score for Went_BankruptEdge             |  AUPRC Score for all Edge Types
-:-------------------------:|:-------------------------:
-![](figure/GCN_AUPRC_Bkrpt.PNG)  |  ![](figure/GCN_AUPRC_all.PNG)
 
 
 
 
+<p align="center">
+    <img src="figure/GCN_AUPRC_Bkrpt.PNG" height="350"/>
+    <p align="center">Fig 7. AUPRC Score for the Went_BankruptEdge over varying size of graphs </p>
+</p>
+<p align="center">
+    <img src="figure/GCN_AUPRC_all.PNG" height="450"/>
+    <p align="center">Fig 8. AUPRC Score for all Edge Types over varying size of graphs</p>
+</p>
 
 We can observe that the average precision score for edge types increases as the number of nodes in the graph increases. Also, the GCNN model(**AUPRC: 0.73**) for a partial sample (30K nodes) achieves a better average precision score compared to the SegNet model(**AUPRC: 0.43**) running on the complete dataset. We can also observe that the GCNN model avoids the issue of sparsity in adjacency matrices faced by the SegNet model, by considering only connected neighbors in the graph. The GCNN model also leverages the graphical structure of our data-set by incorporating nodal features for the nodes and hence improving the results.
 
