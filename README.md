@@ -45,7 +45,7 @@ It is worth mentioning the high class-imbalance problem we faced since the graph
 
 ## Approaches 
 
-### I. Image Segmenatation Model
+### I. Image Segmentation Model
 
 ### II. Graph Convolutional Neural Network Model
 Our approach to building a model using Graph Convolutional Neural Network (GCNN) to solve the multi-relational link prediction task in a multimodal finance graph had to take care of an important observation relating to the nature of the dataset. There is a huge variation in the number node pairs that the data set contains corresponding to each edge type. Therefore, it becomes important that we develop an end-to-end approach such that the model shares the parameters from different edge types. 
