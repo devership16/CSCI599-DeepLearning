@@ -114,7 +114,7 @@ We create batches by randomly selecting an edge type and then randomly picking e
 
 
 ## Results
-#### I. Image Segmentation Model (SegNet):
+### I. Image Segmentation Model (SegNet):
 
 We ran the Image segmentation model for the whole data-set and observed the following results:
 
@@ -152,7 +152,7 @@ Precision-Recall Curve             |  Heat Map for all Edge Types
 
 
 
-#### II. Graph Convolutional Network (GCN):
+### II. Graph Convolutional Network (GCN):
 
 We ran our GCN model for graphs with a different number of total nodes(10K, 20K, 25K, and 30K nodes) and observed the following results:
 
