@@ -122,9 +122,11 @@ We ran the Image segmentation model for the whole data-set and observed the foll
 
 
 
-|       			| Accuracy  	| Recall     	| Precision 	| 
-|:-----------------	|:-----------	|:-----------	|:-----------	|
-| SegNet           	| 0.9614        | 0.3687        | 0.1923       	| 
+|       			| Accuracy  	| Recall     	| Precision 	| **AUPRC**     |
+|:-----------------	|:-----------	|:-----------	|:-----------	|:-----------   |
+| SegNet           	| 0.9757        | 0.6299        | 0.3571       	| 0.43          |
+
+
 
 #### II. Graph Convolutional Network (GCN):
 
@@ -203,8 +205,6 @@ systems. In Proceedings of the International Conference on Machine Learning (ICM
 
 
 
-
-## How To Run:
 
 ## Authors:
 
