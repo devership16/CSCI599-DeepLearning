@@ -121,15 +121,29 @@ We ran the Image segmentation model for the whole data-set and observed the foll
 
    **Results of SegNet Model for the Bankruptcy Edge**
 
+
+
 |       			| Accuracy  	| Recall     	| Precision 	| **AUPRC**     |
 |:-----------------	|:-----------	|:-----------	|:-----------	|:-----------   |
 | SegNet           	| 0.9757        | 0.6299        | 0.3571       	| **0.43**      |
+
+
+
 **NOTE:** AURPRC - Average Precision Score
 
-<p align="left">
-    <img src="figure/SegNet_PRC.jpeg" height="250"/>
-    <img src="figure/SegNet_all.jpeg" height="250"/>
-</p>
+
+
+
+
+
+
+olarized dark             |  Solarized Ocean
+:-------------------------:|:-------------------------:
+![](figure/SegNet_PRC.jpeg)  |  ![](SegNet_PRC_all.jpeg)
+
+
+
+
 
 
 
@@ -149,6 +163,7 @@ We ran our GCN model for graphs with a different number of total nodes(10K, 20K,
 <p align="center">
     <img src="figure/GCN_AUPRC_Bkrpt.PNG" height="350"/>
 </p>
+
 
    **Results of GCN Model for all edge types (bi-directional) in the Graph**   
    
