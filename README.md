@@ -24,7 +24,7 @@ graph neural network and graph convolutional network approaches by sequentially 
 attributes, node attributes and global attributes of the graph and transmitting the information after
 each update. In a similar vein, [9] introduced the non-local neural network (NLNN), which unified
 various “self-attention”-style methods by analogy to methods from computer vision and graphical
-models for capturing long range dependencies in signals.
+models for capturing long-range dependencies in signals.
 
 Graph neural network models usually consist of Graph Network (GN) blocks and can be divided into
 three main categories depending on the task that needs to be served. Node-focused and graph-focused
