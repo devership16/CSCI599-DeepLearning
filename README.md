@@ -133,9 +133,13 @@ We ran our GCN model for graphs with a different number of total nodes(10K, 20K,
 
    **Results of GCN Model for the Bankruptcy Edge (Went_Bankrupt)**
 
+<p align="center">
+
 | Edge Type			| AUPRC_10K 	| AUPRC_20K 	| AUPRC_25K 	| **AUPRC_30K** 	|
 |:-----------------	|:-----------	|:-----------	|:-----------	|:--------------	|
 | Went_Bankrupt   	| 0         	| 0.4906    	| 0.62563   	| **0.73012**   	|
+
+</p>
 
 <p align="center">
     <img src="figure/GCN_AUPRC_Bkrpt.PNG" height="350"/>
