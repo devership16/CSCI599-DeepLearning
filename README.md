@@ -73,6 +73,7 @@ Where $h_i^k$ the embedding of node $v_i$ in the kth layer with a dimensionality
 
 ## 4. Results
 **I. Image Segmentation Model (SegNet):**
+
 We ran the Image segmentation model for the whole data-set and observed the following results:
 
    **Results of SegNet Model for the Bankruptcy Edge**
