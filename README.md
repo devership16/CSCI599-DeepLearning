@@ -71,10 +71,11 @@ For a given node, the model takes into account the feature vector of its first-o
 
 ##### $$h_{i}^{k+1} = \phi(\sum_r \sum_{j \epsilon N_r^i} c_r^{ij} W_r^k h_j^k + c_r^i h_i^k)$$  
 
-Where $$h_i^k$$ the embedding of node $$v_i$$ in the kth layer with a dimensionality $$d^k$$, r is an edge type and $$W_k^r$$ is a weight/parameter matrix corresponding to it, $$\phi$$ represents a non-linear activation function, $$c_r^{ij}$$ are normalization constants. We build a two-layer model by stacking two layers of these. The input to the first layer is the node feature vectors or one-hot vectors if the features are not present.
+Where $$h_i^k$$ the embedding of node $$v_i$$ in the kth layer with a dimensionality $$d^k$$, r is an edge type and $$W_k^r$$ is a weight/parameter matrix corresponding to it, $$\phi$$ represents a non-linear activation function, $$c_r^{ij}$$ are normalization constants. A more detailed view of one convolution for the encoder is depicted in fig-3. We build a two-layer model by stacking two layers of these. The input to the first layer is the node feature vectors or one-hot vectors if the features are not present.
 
 <p align="center">
     <img src="figure/GCNEncoder.JPG"/>
+    <p align="center">Fig 3. Encoder Architecture for the GCNN Model</p>
 </p>
 
 #### GCNN Decoder  
@@ -83,7 +84,7 @@ The input to the decoder is a pair of node embeddings that we want to decode. We
 ##### $$p_r^{ij} = \sigma (g(v_i, r, v_j)) $$  
 
 
-The decoder is a rank-d DEDICOM tensor factorization of a 3-way tensor (Nickel et al., 2011; Trouillon et al., 2016). We take the embeddings of two nodes produced by the encoder, $$z_i$$ and $$z_j$$, using which the decoder then predicts if an edge type $$r$$ exists between the nodes.
+The decoder is a rank-d DEDICOM tensor factorization of a 3-way tensor (Nickel et al., 2011; Trouillon et al., 2016). We take the embeddings of two nodes produced by the encoder, $$z_i$$ and $$z_j$$, using which the decoder then predicts if an edge type $$r$$ exists between the nodes. This is depicted in fig-4
 
 ##### $$g(v_i, r, v_j) = z_i^T D_r R D_r Z_j $$  
 
@@ -92,6 +93,7 @@ Here, $$R$$ is a trainable weight matrix that models the global variations betwe
 
 <p align="center">
     <img src="figure/GCNDecoder.JPG"/>
+    <p align="center">Fig 4. Decoder Architecture for the GCNN Model</p>
 </p>
 
 #### GCNN Training  
