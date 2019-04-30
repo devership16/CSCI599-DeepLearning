@@ -87,7 +87,7 @@ The input to the encoder is the nodal feature vectors $$h_i$$, and the graph $$G
 
 <p align="center">
     <img src="figure/GCN.JPG" height="450"/>
-    <p align="center">Fig 5. A two layer multimodal network for GCNN Model with convolutions across K-hop distances</p>
+    <p align="center">Fig 5. A two-layer multimodal network for GCNN Model with convolutions across K-hop distances</p>
 </p>
 
 For a given node, the model takes into account the feature vector of its first-order neighbors. Since each neighbor can be of a different node type and can have different edge label, we have a different neural network architecture for each node. Each node type can have different lengths of embeddings; therefore, it is important that each edge type has a different set of weights. Note, an edge type is different if the node types are reversed. The convolution operators we define in the encoder uses these weights depending on the neighbors and edge types. On the successive application of these convolution operators, we essentially convolve across a K-hop distance in the graph for each neighbor. In other words, each node’s embeddings would have been formed using the information passed from all it’s Kth-order neighbors while taking into account the different edge types *(Schlichtkrull et al., 2017)*. This is depicted in fig-5, which shows convolutions around a node. A single convolution on the neural network takes the following form 
@@ -131,9 +131,9 @@ We have used the cross-entropy loss to optimize our model. The loss function can
 ##### $$J = \sum_{(v_i, r, v_j) \in R} J_r(i, j)$$  
 
 
-We have used negative sampling to estimate the model. For each edge type r between nodes $$v_i$$ and $$v_j$$ (positive sample), we choose another node vn randomly and sample the edge type $$r$$ (negative sample) between them (Mikolov et al., 2013). 
+We have used negative sampling to estimate the model. For each edge type r between nodes $$v_i$$ and $$v_j$$ (positive sample), we choose another node $$v_n$$ randomly and sample the edge type $$r$$ (negative sample) between them (Mikolov et al., 2013). 
 
-The loss gradients are then propagated through the decoder and encoder, thus, performing an end-to-end optimization and jointly optimizing all the parameters.  We train our model for 50 epochs using the ADAM optimizer with a learning rate of 0.001. To initialize the weights, we use a method proposed by Glorot and Bengio (2010). We also normalize the node features. We use sparse matrix multiplications due to the enormous size of the matrices which are quite sparse. We also apply dropout to the hidden layers to prevent overfitting and the allowing the model to generalize well. 
+The loss gradients are then propagated through the decoder and encoder, thus, performing an end-to-end optimization and jointly optimizing all the parameters.  We train our model for 50 epochs using the ADAM optimizer with a learning rate of 0.001. To initialize the weights, we use a method proposed by Glorot and Bengio (2010). We also normalize the node features. We use sparse matrix multiplications due to the enormous size of the matrices which are quite sparse. We also apply dropout to the hidden layers to prevent overfitting and thus allowing the model to generalize well. 
 
 We create batches by randomly selecting an edge type and then randomly picking edges from it. If the samples are exhausted then the edge type is not sampled again in the same epoch. If all the edge types are exhausted then we count that as one epoch. This way the edge types are picked in the order of their contribution to the loss function. This approach helps in fitting the model in memory.
 
