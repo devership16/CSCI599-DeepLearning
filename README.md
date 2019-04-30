@@ -123,7 +123,7 @@ We create batches by randomly selecting an edge type and then randomly picking e
 We ran the Image segmentation model for the whole data-set and observed the following results:
 
 
-   **Results of SegNet Model for the Bankruptcy Edge**
+   **Table 1: Results of SegNet Model for the Bankruptcy Edge**
 
 
 
@@ -163,7 +163,7 @@ We ran our GCN model for graphs with a different number of total nodes(10K, 20K,
 
 
 
-   **Results of GCNN Model for all edge types (bi-directional) in the Graph**   
+   **Table 2: Results of GCNN Model for all edge types (bi-directional) in the Graph**   
    
    
    
