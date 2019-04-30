@@ -84,6 +84,7 @@ We ran the Image segmentation model for the whole data-set and observed the foll
 | SegNet           	| 0.9614        | 0.3687        | 0.1923       	| 
 
 **II. Graph Convolutional Network (GCN):**
+
 We ran our GCN model for graphs with a different number of total nodes(10K, 20K, 25K, and 30K nodes) and observed the following results:
 
 **NOTE:** AURPRC - Average Precision Score
