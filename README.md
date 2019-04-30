@@ -58,28 +58,30 @@ In our approach, we build a non-linear, multi-layer neural network model designe
 We built an end-to-end model where the node embeddings are optimized jointly along with tensor factorization
 We describe the both the encoder and decoder in detail
 
-#### GCNN Encoder
+#### GCNN Encoder  
 The input to the encoder is the nodal feature vectors $$h_i$$, and the graph $$G = (V, R)$$ with nodes $$v_i \in V$$ and labeled edges $$(v_i, r, v_j)$$ where $$r \in R$$ is an edge type.  The output is a d-dimensional embedding $$h_{i}^{k+1}$$ for each node. 
 
 For a given node, the model takes into account the feature vector of its first-order neighbors. Since each neighbor can be of different node type and can have different edge label, we have a different neural network architecture for each node. Each node type can have different lengths of embeddings; therefore, it is important that each edge type has a different set of weights. Note, an edge type is different if the node types are reversed. The convolution operators the we define in the encoder uses these weights depending on the neighbors and edge types. On successive application of these convolution operators, we essentially convolve across a K-hop distance in the graph for each neighbor. In other words, each node’s embeddings would have been formed using the information passed from all it’s Kth-order neighbors, while taking into account the different edge types *(Schlichtkrull et al., 2017)*. A single convolution on the neural network takes the following form 
 
-##### $$h_{i}^{k+1} = \phi(\sum_r \sum_{j \epsilon N_r^i} c_r^{ij} W_r^k h_j^k + c_r^i h_i^k)$$
+##### $$h_{i}^{k+1} = \phi(\sum_r \sum_{j \epsilon N_r^i} c_r^{ij} W_r^k h_j^k + c_r^i h_i^k)$$  
 
 Where $$h_i^k$$ the embedding of node $$v_i$$ in the kth layer with a dimensionality $$d^k$$, r is an edge type and $$W_k^r$$ is a weight/parameter matrix corresponding to it, $$\phi$$ represents a non-linear activation function, $$c_r^{ij}$$ are normalization constants. We build a two-layer model by stacking two layers of these. The input to the first layer is the node feature vectors or one-hot vectors if the features are not present.
 
 
-#### GCNN Decoder
+#### GCNN Decoder  
 The input to the decoder is a pair of node embeddings that we want to decode. We treat each edge label differently i.e. we have a function $$g$$ that scores how likely it is that two nodes $$v_i$$ and $$v_j$$ have an edge type $$r$$ between them. 
 
-### $$p_r^{ij} = \sigma (g(v_i, r, v_j)) $$
+##### $$p_r^{ij} = \sigma (g(v_i, r, v_j)) $$  
+
 
 The decoder is a rank-d DEDICOM tensor factorization of a 3-way tensor (Nickel et al., 2011; Trouillon et al., 2016). We take the embeddings of two nodes produced by the encoder, $$z_i$$ and $$z_j$$, using which the decoder then predicts if an edge type $$r$$ exists between the nodes.
 
-##### $$g(v_i, r, v_j) = z_i^T D_r R D_r Z_j $$
+##### $$g(v_i, r, v_j) = z_i^T D_r R D_r Z_j $$  
+
 
 Here, $$R$$ is a trainable weight matrix that models the global variations between the two node types $$i$$ and $$j$$. This parameter is shared between all the edge types corresponding to the node types. The other parameter is $$D_r$$, a diagonal matrix, which are used to map local interactions for each edge type $$r$$. They model the importance of each dimension in the node embeddings towards predicting the existence of an edge type $$r$$. 
 
-#### GCNN Training
+#### GCNN Training  
 The trainable parameters of the model are 
 - weight matrices for each edge type $$W_r$$
 - Weight matrix $$R$$ for mapping interaction between two node types
@@ -88,7 +90,8 @@ The trainable parameters of the model are
 We have used the cross-entropy loss to optimize our model. The loss function can be represented as 
 
 ##### $$J_r(i, j) = -\log p_r^{ij} - \mathbb{E}_{n\sim P_r (j)} \(1 - p_r^{in})log$$
-##### $$J = \sum_{(v_i, r, v_j) \in R} J_r(i, j)$$
+##### $$J = \sum_{(v_i, r, v_j) \in R} J_r(i, j)$$  
+
 
 We have used negative sampling to estimate the model. For each edge type r between nodes $$v_i$$ and $$v_j$$ (positive sample), we choose another node vn randomly and sample the edge type $$r$$ (negative sample) between them (Mikolov et al., 2013). 
 
@@ -182,6 +185,12 @@ bias for physical construction in humans and machines. In Proceedings of the 40t
 the Cognitive Science Society, 2018.
 11. T. Kipf, E. Fetaya, K.-C. Wang, M. Welling, and R. Zemel. Neural relational inference for interacting
 systems. In Proceedings of the International Conference on Machine Learning (ICML), 2018.
+12. Schlichtkrull,M. et al. (2017) Modeling relational data with graph convolutional networks. arXiv: 1703.06103.
+13. Nickel,M. et al. (2011) A three-way model for collective learning on multi-relational data. In ICML, Vol. 11, pp. 809–816. 
+14. Trouillon,T. et al. (2016) Complex embeddings for simple link prediction. In ICML., 33, 2071–2080.
+15. Glorot,X. and Bengio,Y. (2010) Understanding the difficulty of training deep feedforward neural networks. In AISTATS, Vol. 13. pp. 249–256.
+
+
 
 
 ## How To Run:
