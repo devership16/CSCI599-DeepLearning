@@ -71,8 +71,46 @@ For a given node, the model takes into account the feature vector of its first-o
 
 Where $h_i^k$ the embedding of node $v_i$ in the kth layer with a dimensionality $d^k$, r is an edge type and $W_k^r$ is a weight/parameter matrix corresponding to it, $\phi$ represents a non-linear activation function, $c_r^{ij}$ are normalization constants. We build a two-layer model by stacking two layers of these. The input to the first layer is the node feature vectors or one-hot vectors if the features are not present.
 
+##Results
+**I. Image Segmentation Model (SegNet):**
+We ran the Image segmentation model for the whole data-set and observed the following results:
 
 
+
+**II. Graph Convolutional Network (GCN):**
+We ran our GCN model for graphs with a different number of total nodes(10K, 20K, 25K, and 30K nodes) and observed the following results:
+
+**NOTE:** AURPRC - Average Precision Score
+
+         **Results of GCN Model for the Bankruptcy Edge (Went_Bankrupt)**
+| Edge Type			| AUPRC_10K 	| AUPRC_20K 	| AUPRC_25K 	| AUPRC_30K 	|
+|-----------------	|-----------	|-----------	|-----------	|-----------	|
+| Went_Bankrupt   	| 0         	| 0.4906    	| 0.62563   	| 0.73012   	|
+
+<p align="center">
+    <img src="figure/GCN_AUPRC_Bkrpt.png" height="350"/>
+</p>
+
+       ** Results of GCN Model for all edge types (bi-directional) in the Graph **
+| Edge Type          	| AUPRC_10K 	| AUPRC_20K 	| AUPRC_25K 	| AUPRC_30K 	|
+|--------------------	|-----------	|-----------	|-----------	|-----------	|
+| Employs            	| 0.6076    	| 0.6782    	| 0.70031   	| 0.69323   	|
+| Employed           	| 0.56125   	| 0.6083    	| 0.60821   	| 0.62838   	|
+| Was_Founded_By     	| 0.84427   	| 0.8729    	| 0.861     	| 0.87204   	|
+| Employs            	| 0.85175   	| 0.9095    	| 0.97228   	| 0.97663   	|
+| Employed           	| 0.81013   	| 0.9601    	| 0.96152   	| 0.96193   	|
+| Was_Founded_By     	| 0.85535   	| 0.9046    	| 0.89107   	| 0.91841   	|
+| Acquired           	| 0.79239   	| 0.9705    	| 0.97351   	| 0.9717    	|
+| Was_Invested_In_By 	| 0.80587   	| 0.9489    	| 0.93843   	| 0.90202   	|
+| Acquired           	| 0.78444   	| 0.9886    	| 0.97656   	| 0.99003   	|
+| Was_Invested_In_By 	| 0.74629   	| 0.9259    	| 0.92427   	| 0.93148   	|
+| Went_Bankrupt      	| 0         	| 0.4906    	| 0.62563   	| 0.73012   	|
+
+<p align="center">
+    <img src="figure/GCN_AUPRC_all.png" height="350"/>
+</p>
+
+We can observe that the average precision score for edge types increases as the number of nodes in the graph increases. Also, the GCN model for a partial sample (30K nodes) achieves a better average precision score compared to the SegNet model running on the complete dataset. We can observe that the GCN model avoids the issue of sparsity in adjacency matrices faced by the Image Segmentation model, by considering only connected neighbors. The GCN model also leverages the graphical structure of our data-set by incorporating nodal features for the nodes.
 
 ## References
 1. P. W. Battaglia et al. Relational inductive biases, deep learning, and graph networks. arXiv preprint arXiv:
