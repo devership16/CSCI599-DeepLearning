@@ -56,7 +56,7 @@ In our approach, we build a non-linear, multi-layer neural network model designe
 - **Decoder:** A model that uses these embeddings to perform tensor factorization and predicts the edges
 
 We built an end-to-end model where the node embeddings are optimized jointly along with tensor factorization
-We describe the both the encoder and decoder in detail
+We describe both the encoder and decoder in detail
 
 #### GCNN Encoder  
 The input to the encoder is the nodal feature vectors $$h_i$$, and the graph $$G = (V, R)$$ with nodes $$v_i \in V$$ and labeled edges $$(v_i, r, v_j)$$ where $$r \in R$$ is an edge type.  The output is a d-dimensional embedding $$h_{i}^{k+1}$$ for each node. 
