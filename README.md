@@ -158,6 +158,8 @@ We ran our GCN model for graphs with a different number of total nodes(10K, 20K,
 | Edge Type			| AUPRC_10K 	| AUPRC_20K 	| AUPRC_25K 	| **AUPRC_30K** 	|
 |:-----------------	|:-----------	|:-----------	|:-----------	|:--------------	|
 | Went_Bankrupt   	| 0         	| 0.4906    	| 0.62563   	| **0.73012**   	|
+
+
 **NOTE:** AURPRC - Average Precision Score
 
 <p align="center">
@@ -186,13 +188,15 @@ We ran our GCN model for graphs with a different number of total nodes(10K, 20K,
 | Acquired           	| 0.78444   	| 0.9886    	| 0.97656   	| 0.99003   	|
 | Was_Invested_In_By 	| 0.74629   	| 0.9259    	| 0.92427   	| 0.93148   	|
 | Went_Bankrupt      	| 0         	| 0.4906    	| 0.62563   	| 0.73012   	|
+
+
 **NOTE:** AURPRC - Average Precision Score
 
 <p align="center">
     <img src="figure/GCN_AUPRC_all.PNG" height="350"/>
 </p>
 
-We can observe that the average precision score for edge types increases as the number of nodes in the graph increases. Also, the GCN model for a partial sample (30K nodes) achieves a better average precision score compared to the SegNet model running on the complete dataset. We can also observe that the GCN model avoids the issue of sparsity in adjacency matrices faced by the Image Segmentation model, by considering only connected neighbors in the graph. The GCN model also leverages the graphical structure of our data-set by incorporating nodal features for the nodes and hence improving the results.
+We can observe that the average precision score for edge types increases as the number of nodes in the graph increases. Also, the GCN model(**AUPRC: 0.73**) for a partial sample (30K nodes) achieves a better average precision score compared to the SegNet model(**AUPRC:0.43**) running on the complete dataset. We can also observe that the GCN model avoids the issue of sparsity in adjacency matrices faced by the SegNet model, by considering only connected neighbors in the graph. The GCN model also leverages the graphical structure of our data-set by incorporating nodal features for the nodes and hence improving the results.
 
 ## References
 1. P. W. Battaglia et al. Relational inductive biases, deep learning, and graph networks. arXiv preprint arXiv:
