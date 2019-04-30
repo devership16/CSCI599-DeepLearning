@@ -1,3 +1,4 @@
+
 # Deep Link Prediction for Graphical Database
 
 ## 1. Motivation and Goal
@@ -41,6 +42,28 @@ We have used a combined dataset consisting of Bloomberg Bankruptcy Data for Comp
 
 Our graph dataset contains 8 types of nodes and 14 types of edges. Our goal was to initially create a super-node called Bankruptcy node and connect all US companies which filed bankruptcy according to the Bloomberg financial data. Then, by using the Image Segmentation model approach and the GCNN approach, we tried to predict the existence of an edge between a Company node and the Bankruptcy super-node.
 It is worth mentioning the high class-imbalance problem we faced since the graph dataset contained >600,000 companies out of which only ~3,500 companies had filed bankruptcy according to the collected Bloomberg financial data. 
+
+## 3. Dataset 
+
+#### i. Image Segmenatation Model
+
+#### ii. Graph Convolutional Neural Network Model
+
+Our approach to building a model using Graph Convolutional Neural Network (GCNN) to solve the multi-relational link prediction task in a multimodal finance graph had to take care of an important observation relating to the nature of the dataset. There is a huge variation in the number node pairs that the data set contains corresponding to each edge type. Therefore, it becomes important that we develop an end-to-end approach such that the model shares the parameters from different edge types. 
+
+In our approach, we build a non-linear, multi-layer neural network model designed to operate on a graph. The model has two main components:
+
+**a. Encoder:** The objective is to produce an embedding for each node in the graph
+
+**b. Decoder:** A model that uses these embeddings to perform tensor factorization and predicts the edges
+
+We built an end-to-end model where the node embeddings are optimized jointly along with tensor factorization
+We describe the both the encoder and decoder in detail
+
+**GCNN Encoder**
+
+
+
 
 
 ## References
