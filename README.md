@@ -101,7 +101,7 @@ The trainable parameters of the model are
 
 We have used the cross-entropy loss to optimize our model. The loss function can be represented as 
 
-##### $$J_r(i, j) = -\log p_r^{ij} - \mathbb{E}_{n\sim P_r (j)} \(1 - p_r^{in})log$$
+##### $$J_r(i, j) = -\log p_r^{ij} - \mathbb{E}_{n\sim P_r (j)} \log(1 - p_r^{in})$$
 ##### $$J = \sum_{(v_i, r, v_j) \in R} J_r(i, j)$$  
 
 
