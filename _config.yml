@@ -1,6 +1,7 @@
 theme: jekyll-theme-cayman
 
 title: CSCI 599 - Deep Link Prediction in Graph Databases
+bigimg: "/figure/logo3.JPG"
 markdown: kramdown
 kramdown:
   math_engine: mathjax
