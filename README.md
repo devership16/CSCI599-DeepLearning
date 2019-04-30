@@ -118,13 +118,18 @@ We create batches by randomly selecting an edge type and then randomly picking e
 
 We ran the Image segmentation model for the whole data-set and observed the following results:
 
+
    **Results of SegNet Model for the Bankruptcy Edge**
-
-
 
 |       			| Accuracy  	| Recall     	| Precision 	| **AUPRC**     |
 |:-----------------	|:-----------	|:-----------	|:-----------	|:-----------   |
-| SegNet           	| 0.9757        | 0.6299        | 0.3571       	| 0.43          |
+| SegNet           	| 0.9757        | 0.6299        | 0.3571       	| **0.43**      |
+**NOTE:** AURPRC - Average Precision Score
+
+<p align="center">
+    <img src="figure/SegNet_PRC.jpeg" height="150"/>
+    <img src="figure/SegNet_all.jpeg" height="150"/>
+</p>
 
 
 
@@ -132,7 +137,6 @@ We ran the Image segmentation model for the whole data-set and observed the foll
 
 We ran our GCN model for graphs with a different number of total nodes(10K, 20K, 25K, and 30K nodes) and observed the following results:
 
-**NOTE:** AURPRC - Average Precision Score
 
    **Results of GCN Model for the Bankruptcy Edge (Went_Bankrupt)**
 
@@ -140,6 +144,7 @@ We ran our GCN model for graphs with a different number of total nodes(10K, 20K,
 | Edge Type			| AUPRC_10K 	| AUPRC_20K 	| AUPRC_25K 	| **AUPRC_30K** 	|
 |:-----------------	|:-----------	|:-----------	|:-----------	|:--------------	|
 | Went_Bankrupt   	| 0         	| 0.4906    	| 0.62563   	| **0.73012**   	|
+**NOTE:** AURPRC - Average Precision Score
 
 <p align="center">
     <img src="figure/GCN_AUPRC_Bkrpt.PNG" height="350"/>
@@ -166,6 +171,7 @@ We ran our GCN model for graphs with a different number of total nodes(10K, 20K,
 | Acquired           	| 0.78444   	| 0.9886    	| 0.97656   	| 0.99003   	|
 | Was_Invested_In_By 	| 0.74629   	| 0.9259    	| 0.92427   	| 0.93148   	|
 | Went_Bankrupt      	| 0         	| 0.4906    	| 0.62563   	| 0.73012   	|
+**NOTE:** AURPRC - Average Precision Score
 
 <p align="center">
     <img src="figure/GCN_AUPRC_all.PNG" height="350"/>
