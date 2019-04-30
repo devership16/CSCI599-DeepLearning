@@ -36,15 +36,20 @@ order to predict the existence of an edge between two nodes as well as its corre
 
 
 ## Dataset 
-We have used a combined dataset consisting of Bloomberg Bankruptcy Data for Companies (Year: 2009-2019) and a graph dataset containing approximately 6 million nodes (Person, Organizations, etc) with 10 million relationships.
+Using CrunchBase’s enterprise API we scraped approximately 5 million nodes and 8 million edges that model the U.S. financial system with an emphasis on early stage companies. Node types included Organization, Person, IPO, Funding Round, Job, Website, News, Address, Picture, Acquisition, Category, Fund, and Investment. Edge labels include such relationships as Employs, Was Founded By, Acquired, Invested In, Employed, Funded, Board of Director, and several more for a total of 29 unique relationship labels. See the figure below.
 
 <p align="center">
     <img src="figure/GraphExample.png" height="350"/>
     <p>Fig 1: Example sub-graph containing company, people, funding rounds, and product areas. Notice the highly interconnected nature of the nodes and variety of node types. </p>
 </p>
 
-Our graph dataset contains 8 types of nodes and 14 types of edges. Our goal was to initially create a super-node called Bankruptcy node and connect all US companies which filed bankruptcy according to the Bloomberg financial data. Then, by using the Image Segmentation model approach and the GCNN approach, we tried to predict the existence of an edge between a Company node and the Bankruptcy super-node.
-It is worth mentioning the high class-imbalance problem we faced since the graph dataset contained >600,000 companies out of which only ~3,500 companies had filed bankruptcy according to the collected Bloomberg financial data. 
+In this figure the red nodes are companies and the small multi-colored nodes connected to them represent their Jobs, Persons, Funding Rounds, etc. To store this dataset we instantiated a NEO4J database and to query it we used py2neo; a python wrapper that can call NEO4J’s JAVA based cypher query engine. 
+
+We collected our list of bankrupt companies using Bloomberg’s terminal API. To link the bankruptcies we found with the companies in the database we used simple string augmentation techniques like removing all co, org, corp, ltd, ect; all trailing ‘s’ characters; all spaces; and lowering all words. We choose to not use any string similarity metrics like Jaro or Levenshtein because we determined that even with a match threshold of 0.98 there was too much risk of false positives and injecting noise into our model. Using our techniques we found ~3.5k of the ~650k companies in our database had a match in the list of bankrupt companies scraped from Bloomberg. 
+
+To integrate these matches into the graph in a way that conformed with our edge prediction problem formulation and topology sensitive models, we decided to create a single bankruptcy node and add a ‘Went_Bankrupt’ edge between it and every matched company. This linked every bankrupt company via the bankruptcy node and created rich adjacency matrices with multiple examples of bankrupt companies in each when predicting if an edge existed between the bankruptcy node and some new company in question. 
+
+For licensing reasons we had to augment the aforementioned graph to obscure any identifiable information since we borrowed the data from one of our group member’s work group. To do this we embedded all nodal features using word2vec, TFiDF, and SVD. We also replaced all company names with a unique id. For memory and sparsity considerations we also converted several node types into edge features or, like in the case of Picture and Website, we dropped several node types altogether. For example, previously a graph walk could have included the series Picture<-Organization->Job->Person. After these conversions that walk would be Organization->Person with the features of that job as edge features. These conversions decreased the total number of node types to 8, number of nodes to 1.56M, number of edges to 3.14M, and edge types to 14.   
 
 ## Approaches 
 
