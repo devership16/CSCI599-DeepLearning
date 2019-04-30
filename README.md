@@ -1,13 +1,13 @@
 
 # Deep Link Prediction for Graphical Database
 
-## 1. Motivation and Goal
+## Motivation and Goal
 In recent years, deep learning has achieved great success in the fields of vision, speech, and natural language understanding. The ability of deep learning to extract underlying patterns from complex, large-scale and high-dimensional data is well recognized. Many real-world applications are built on a graphical database, and thus utilize graphs for storing data. The graph here means a directed, attributed multi-graph with data stored as nodes and relationships (links) between nodes stored as edges. Graphical databases are ubiquitous and often consist of hundreds of millions of nodes and relationships. There is rich information embedded in the complex topology of these graphs that can be leveraged when doing inference on the data stored in them. As a result, utilizing deep learning to extract this information has gained a lot of traction in the research community. 
 
 In order to address the aforementioned problem, we followed two distinct approaches. In the first approach, we propose a Graph-Based Classification Model using a Convolutional Neural Network (CNN) that uses nodal features as well as the structure of a node's local sub-graph to predict links between graph nodes by using an adjacency matrix formulation. In the second approach, we propose a Graph Convolutional Neural Network (GCNN) which has a structure similar to an autoencoder. This formulation enables us to use our prior information about the structure of the graph more efficiently by putting a relational inductive bias [1] into our model.
 
 
-## 2. Related Work
+## Related Work
 Neural networks that operate on graphs, and structure their computations accordingly, have been
 developed and explored extensively for more than a decade under the umbrella of “graph neural
 networks” [2], but have grown rapidly in scope and popularity in recent years.
@@ -33,7 +33,7 @@ the spirit of [10,11], our main scope in this project is the design of an edge-f
 order to predict the existence of an edge between two nodes as well as its corresponding label.
 
 
-## 3. Dataset 
+## Dataset 
 We have used a combined dataset consisting of Bloomberg Bankruptcy Data for Companies (Year: 2009-2019) and a graph dataset containing approximately 6 million nodes (Person, Organizations, etc) with 10 million relationships.
 
 <p align="center">
@@ -43,11 +43,11 @@ We have used a combined dataset consisting of Bloomberg Bankruptcy Data for Comp
 Our graph dataset contains 8 types of nodes and 14 types of edges. Our goal was to initially create a super-node called Bankruptcy node and connect all US companies which filed bankruptcy according to the Bloomberg financial data. Then, by using the Image Segmentation model approach and the GCNN approach, we tried to predict the existence of an edge between a Company node and the Bankruptcy super-node.
 It is worth mentioning the high class-imbalance problem we faced since the graph dataset contained >600,000 companies out of which only ~3,500 companies had filed bankruptcy according to the collected Bloomberg financial data. 
 
-## 3. Dataset 
+## Approaches 
 
-#### i. Image Segmenatation Model
+#### I. Image Segmenatation Model
 
-#### ii. Graph Convolutional Neural Network Model
+#### II. Graph Convolutional Neural Network Model
 
 Our approach to building a model using Graph Convolutional Neural Network (GCNN) to solve the multi-relational link prediction task in a multimodal finance graph had to take care of an important observation relating to the nature of the dataset. There is a huge variation in the number node pairs that the data set contains corresponding to each edge type. Therefore, it becomes important that we develop an end-to-end approach such that the model shares the parameters from different edge types. 
 
@@ -71,7 +71,7 @@ For a given node, the model takes into account the feature vector of its first-o
 
 Where $h_i^k$ the embedding of node $v_i$ in the kth layer with a dimensionality $d^k$, r is an edge type and $W_k^r$ is a weight/parameter matrix corresponding to it, $\phi$ represents a non-linear activation function, $c_r^{ij}$ are normalization constants. We build a two-layer model by stacking two layers of these. The input to the first layer is the node feature vectors or one-hot vectors if the features are not present.
 
-## 4. Results
+## Results
 **I. Image Segmentation Model (SegNet):**
 
 We ran the Image segmentation model for the whole data-set and observed the following results:
@@ -128,7 +128,7 @@ We ran our GCN model for graphs with a different number of total nodes(10K, 20K,
     <img src="figure/GCN_AUPRC_all.PNG" height="350"/>
 </p>
 
-We can observe that the average precision score for edge types increases as the number of nodes in the graph increases. Also, the GCN model for a partial sample (30K nodes) achieves a better average precision score compared to the SegNet model running on the complete dataset. We can observe that the GCN model avoids the issue of sparsity in adjacency matrices faced by the Image Segmentation model, by considering only connected neighbors. The GCN model also leverages the graphical structure of our data-set by incorporating nodal features for the nodes.
+We can observe that the average precision score for edge types increases as the number of nodes in the graph increases. Also, the GCN model for a partial sample (30K nodes) achieves a better average precision score compared to the SegNet model running on the complete dataset. We can also observe that the GCN model avoids the issue of sparsity in adjacency matrices faced by the Image Segmentation model, by considering only connected neighbors in the graph. The GCN model also leverages the graphical structure of our data-set by incorporating nodal features for the nodes and hence improving the results.
 
 ## References
 1. P. W. Battaglia et al. Relational inductive biases, deep learning, and graph networks. arXiv preprint arXiv:
@@ -157,11 +157,9 @@ the Cognitive Science Society, 2018.
 systems. In Proceedings of the International Conference on Machine Learning (ICML), 2018.
 
 
-__________________________________________________________________________________________________________________________________
-How To Run:
+## How To Run:
 
-___________________________________________________________________________________________________________________________________
-Authors:
+## Authors:
 
 Aristotelis-Angelos Papadopoulos: aristotp@usc.edu
 
