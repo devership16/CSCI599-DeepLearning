@@ -91,7 +91,15 @@ We ran our GCN model for graphs with a different number of total nodes(10K, 20K,
     <img src="figure/GCN_AUPRC_Bkrpt.PNG" height="350"/>
 </p>
 
-   **Results of GCN Model for all edge types (bi-directional) in the Graph**
+
+
+
+
+
+
+
+
+   
 | Edge Type          	| AUPRC_10K 	| AUPRC_20K 	| AUPRC_25K 	| AUPRC_30K 	|
 |--------------------	|-----------	|-----------	|-----------	|-----------	|
 | Employs            	| 0.6076    	| 0.6782    	| 0.70031   	| 0.69323   	|
