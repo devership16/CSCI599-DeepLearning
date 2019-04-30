@@ -138,7 +138,7 @@ We ran our GCN model for graphs with a different number of total nodes(10K, 20K,
 | Edge Type			| AUPRC_10K 	| AUPRC_20K 	| AUPRC_25K 	| **AUPRC_30K** 	|
 |:-----------------	|:-----------	|:-----------	|:-----------	|:--------------	|
 | Went_Bankrupt   	| 0         	| 0.4906    	| 0.62563   	| **0.73012**   	|
-
+    <em>"Test"</em>
 </p>
 
 <p align="center">
