@@ -147,9 +147,17 @@ Precision-Recall Curve             |  Heat Map for all Edge Types
 
 
 
+
+
+
+
+
 #### II. Graph Convolutional Network (GCN):
 
 We ran our GCN model for graphs with a different number of total nodes(10K, 20K, 25K, and 30K nodes) and observed the following results:
+
+
+
 
 
    **Results of GCN Model for the Bankruptcy Edge (Went_Bankrupt)**
@@ -165,6 +173,12 @@ We ran our GCN model for graphs with a different number of total nodes(10K, 20K,
 <p align="center">
     <img src="figure/GCN_AUPRC_Bkrpt.PNG" height="350"/>
 </p>
+
+
+
+
+
+
 
 
    **Results of GCN Model for all edge types (bi-directional) in the Graph**   
@@ -188,6 +202,12 @@ We ran our GCN model for graphs with a different number of total nodes(10K, 20K,
 | Acquired           	| 0.78444   	| 0.9886    	| 0.97656   	| 0.99003   	|
 | Was_Invested_In_By 	| 0.74629   	| 0.9259    	| 0.92427   	| 0.93148   	|
 | Went_Bankrupt      	| 0         	| 0.4906    	| 0.62563   	| 0.73012   	|
+
+
+
+
+
+
 
 
 **NOTE:** AURPRC - Average Precision Score
