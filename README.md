@@ -37,7 +37,7 @@ order to predict the existence of an edge between two nodes as well as its corre
 We have used a combined dataset consisting of Bloomberg Bankruptcy Data for Companies (Year: 2009-2019) and a graph dataset containing approximately 6 million nodes (Person, Organizations, etc) with 10 million relationships.
 
 <p align="center">
-    <img src="figure/GCNEncoder.png" height="350"/>
+    <img src="figure/GraphExample.png" height="350"/>
 </p>
 
 Our graph dataset contains 8 types of nodes and 14 types of edges. Our goal was to initially create a super-node called Bankruptcy node and connect all US companies which filed bankruptcy according to the Bloomberg financial data. Then, by using the Image Segmentation model approach and the GCNN approach, we tried to predict the existence of an edge between a Company node and the Bankruptcy super-node.
@@ -68,7 +68,7 @@ For a given node, the model takes into account the feature vector of its first-o
 Where $$h_i^k$$ the embedding of node $$v_i$$ in the kth layer with a dimensionality $$d^k$$, r is an edge type and $$W_k^r$$ is a weight/parameter matrix corresponding to it, $$\phi$$ represents a non-linear activation function, $$c_r^{ij}$$ are normalization constants. We build a two-layer model by stacking two layers of these. The input to the first layer is the node feature vectors or one-hot vectors if the features are not present.
 
 <p align="center">
-    <img src="figure/GraphExample.png" height="350"/>
+    <img src="figure/GCNEncoder.JPG"/>
 </p>
 
 #### GCNN Decoder  
