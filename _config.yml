@@ -1,5 +1,6 @@
 theme: jekyll-theme-cayman
 
+title: Deep Link Prediction in Graph Databases
 markdown: kramdown
 kramdown:
   math_engine: mathjax
