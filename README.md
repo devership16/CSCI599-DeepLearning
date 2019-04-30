@@ -202,7 +202,7 @@ AUPRC Score for Went_BankruptEdge             |  AUPRC Score for all Edge Types
 
 
 
-We can observe that the average precision score for edge types increases as the number of nodes in the graph increases. Also, the GCN model(**AUPRC: 0.73**) for a partial sample (30K nodes) achieves a better average precision score compared to the SegNet model(**AUPRC:0.43**) running on the complete dataset. We can also observe that the GCN model avoids the issue of sparsity in adjacency matrices faced by the SegNet model, by considering only connected neighbors in the graph. The GCN model also leverages the graphical structure of our data-set by incorporating nodal features for the nodes and hence improving the results.
+We can observe that the average precision score for edge types increases as the number of nodes in the graph increases. Also, the GCN model(**AUPRC: 0.73**) for a partial sample (30K nodes) achieves a better average precision score compared to the SegNet model(**AUPRC: 0.43**) running on the complete dataset. We can also observe that the GCN model avoids the issue of sparsity in adjacency matrices faced by the SegNet model, by considering only connected neighbors in the graph. The GCN model also leverages the graphical structure of our data-set by incorporating nodal features for the nodes and hence improving the results.
 
 ## References
 1. P. W. Battaglia et al. Relational inductive biases, deep learning, and graph networks. arXiv preprint arXiv:
