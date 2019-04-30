@@ -118,7 +118,7 @@ We ran the Image segmentation model for the whole data-set and observed the foll
 
 
 |       			| Accuracy  	| Recall     	| Precision 	| 
-|-----------------	|-----------	|-----------	|-----------	|
+|:-----------------	|:-----------	|:-----------	|:-----------	|
 | SegNet           	| 0.9614        | 0.3687        | 0.1923       	| 
 
 #### II. Graph Convolutional Network (GCN):
@@ -129,10 +129,10 @@ We ran our GCN model for graphs with a different number of total nodes(10K, 20K,
 
    **Results of GCN Model for the Bankruptcy Edge (Went_Bankrupt)**
 
-
-
+|Results of GCN Model for the Bankruptcy Edge (Went_Bankrupt)|
+|:-------------------------------------------------------------------------------------:|
 | Edge Type			| AUPRC_10K 	| AUPRC_20K 	| AUPRC_25K 	| **AUPRC_30K** 	|
-|-----------------	|-----------	|-----------	|-----------	|--------------	    |
+|:-----------------	|:-----------	|:-----------	|:-----------	|:--------------	    |
 | Went_Bankrupt   	| 0         	| 0.4906    	| 0.62563   	| **0.73012**   	|
 
 <p align="center">
@@ -148,7 +148,7 @@ We ran our GCN model for graphs with a different number of total nodes(10K, 20K,
    
    
 | Edge Type          	| AUPRC_10K 	| AUPRC_20K 	| AUPRC_25K 	| AUPRC_30K 	|
-|--------------------	|-----------	|-----------	|-----------	|-----------	|
+|:--------------------	|:-----------	|:-----------	|:-----------	|:-----------	|
 | Employs            	| 0.6076    	| 0.6782    	| 0.70031   	| 0.69323   	|
 | Employed           	| 0.56125   	| 0.6083    	| 0.60821   	| 0.62838   	|
 | Was_Founded_By     	| 0.84427   	| 0.8729    	| 0.861     	| 0.87204   	|
