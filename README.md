@@ -71,11 +71,17 @@ For a given node, the model takes into account the feature vector of its first-o
 
 Where $h_i^k$ the embedding of node $v_i$ in the kth layer with a dimensionality $d^k$, r is an edge type and $W_k^r$ is a weight/parameter matrix corresponding to it, $\phi$ represents a non-linear activation function, $c_r^{ij}$ are normalization constants. We build a two-layer model by stacking two layers of these. The input to the first layer is the node feature vectors or one-hot vectors if the features are not present.
 
-##Results
+## 4. Results
 **I. Image Segmentation Model (SegNet):**
 We ran the Image segmentation model for the whole data-set and observed the following results:
 
+   **Results of SegNet Model for the Bankruptcy Edge**
 
+
+
+|       			| Accuracy  	| Recall     	| Precision 	| 
+|-----------------	|-----------	|-----------	|-----------	|
+| SegNet           	| 0.9614        | 0.3687        | 0.1923       	| 
 
 **II. Graph Convolutional Network (GCN):**
 We ran our GCN model for graphs with a different number of total nodes(10K, 20K, 25K, and 30K nodes) and observed the following results:
@@ -86,9 +92,9 @@ We ran our GCN model for graphs with a different number of total nodes(10K, 20K,
 
 
 
-| Edge Type			| AUPRC_10K 	| AUPRC_20K 	| AUPRC_25K 	| AUPRC_30K 	|
-|-----------------	|-----------	|-----------	|-----------	|-----------	|
-| Went_Bankrupt   	| 0         	| 0.4906    	| 0.62563   	| 0.73012   	|
+| Edge Type			| AUPRC_10K 	| AUPRC_20K 	| AUPRC_25K 	| **AUPRC_30K** 	|
+|-----------------	|-----------	|-----------	|-----------	|--------------	    |
+| Went_Bankrupt   	| 0         	| 0.4906    	| 0.62563   	| **0.73012**   	|
 
 <p align="center">
     <img src="figure/GCN_AUPRC_Bkrpt.PNG" height="350"/>
