@@ -1,5 +1,5 @@
 
-# Deep Link Prediction for Graphical Database
+## Motivation
 <p align="center">
     <img src="figure/graph1.gif" height="250"/>
 </p>
@@ -62,7 +62,7 @@ For licensing reasons we had to augment the aforementioned graph to obscure any 
 
 
 ### II. Graph Convolutional Neural Network Model
-Our approach to building a model using Graph Convolutional Neural Network (GCNN) to solve the multi-relational link prediction task in a multimodal finance graph had to take care of an important observation relating to the nature of the dataset. There is a huge variation in the number node pairs that the data set contains corresponding to each edge type. Therefore, it becomes important that we develop an end-to-end approach such that the model shares the parameters from different edge types. 
+Our approach to building a model using Graph Convolutional Neural Network (GCNN) to solve the multi-relational link prediction task in a multimodal finance graph, inspired by [12], had to take care of an important observation relating to the nature of the dataset. There is a huge variation in the number node pairs that the data set contains corresponding to each edge type. Therefore, it becomes important that we develop an end-to-end approach such that the model shares the parameters from different edge types. 
 
 In our approach, we build a non-linear, multi-layer neural network model designed to operate on a graph. The model has two main components:
 
@@ -80,7 +80,7 @@ The input to the encoder is the nodal feature vectors $$h_i$$, and the graph $$G
     <p align="center">Fig 3. A two-layer multimodal network for GCNN Model with convolutions across K-hop distances</p>
 </p>
 
-For a given node, the model takes into account the feature vector of its first-order neighbors. Since each neighbor can be of a different node type and can have different edge label, we have a different neural network architecture for each node. Each node type can have different lengths of embeddings; therefore, it is important that each edge type has a different set of weights. Note, an edge type is different if the node types are reversed. The convolution operators we define in the encoder uses these weights depending on the neighbors and edge types. On the successive application of these convolution operators, we essentially convolve across a K-hop distance in the graph for each neighbor. In other words, each node’s embeddings would have been formed using the information passed from all it’s Kth-order neighbors while taking into account the different edge types *(Schlichtkrull et al., 2017)*. This is depicted in fig-5, which shows convolutions around a node. A single convolution on the neural network takes the following form 
+For a given node, the model takes into account the feature vector of its first-order neighbors. Since each neighbor can be of a different node type and can have different edge label, we have a different neural network architecture for each node. Each node type can have different lengths of embeddings; therefore, it is important that each edge type has a different set of weights. Note, an edge type is different if the node types are reversed. The convolution operators we define in the encoder uses these weights depending on the neighbors and edge types. On the successive application of these convolution operators, we essentially convolve across a K-hop distance in the graph for each neighbor. In other words, each node’s embeddings would have been formed using the information passed from all it’s Kth-order neighbors while taking into account the different edge types [13]. This is depicted in fig-5, which shows convolutions around a node. A single convolution on the neural network takes the following form 
 
 ##### $$h_{i}^{k+1} = \phi(\sum_r \sum_{j \epsilon N_r^i} c_r^{ij} W_r^k h_j^k + c_r^i h_i^k)$$  
 
@@ -97,7 +97,7 @@ The input to the decoder is a pair of node embeddings that we want to decode. We
 ##### $$p_r^{ij} = \sigma (g(v_i, r, v_j)) $$  
 
 
-The decoder is a rank-d DEDICOM tensor factorization of a 3-way tensor (Nickel et al., 2011; Trouillon et al., 2016). We take the embeddings of two nodes produced by the encoder, $$z_i$$ and $$z_j$$, using which the decoder then predicts if an edge type $$r$$ exists between the nodes. This is depicted in fig-7
+The decoder is a rank-d DEDICOM tensor factorization of a 3-way tensor [14,15]. We take the embeddings of two nodes produced by the encoder, $$z_i$$ and $$z_j$$, using which the decoder then predicts if an edge type $$r$$ exists between the nodes. This is depicted in fig-7
 
 ##### $$g(v_i, r, v_j) = z_i^T D_r R D_r Z_j $$  
 
