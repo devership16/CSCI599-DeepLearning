@@ -1,6 +1,6 @@
 import tensorflow as tf
 
-from . import inits
+import inits
 
 flags = tf.app.flags
 FLAGS = flags.FLAGS

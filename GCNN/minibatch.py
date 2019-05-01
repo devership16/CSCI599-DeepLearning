@@ -4,7 +4,7 @@ from __future__ import print_function
 import numpy as np
 import scipy.sparse as sp
 
-from ..utility import preprocessing
+import preprocessing
 
 np.random.seed(123)
 
@@ -17,9 +17,9 @@ class EdgeMinibatchIterator(object):
     batch_size -- size of the minibatches
     """
     def __init__(self, adj_mats, feat, edge_types, batch_size=100, val_test_size=0.01):
-        self.adj_mats = adj_mats
-        self.feat = feat
-        self.edge_types = edge_types
+        self.adj_mats = adj_mats          # adj_mats_orig
+        self.feat = feat                  # feature vectors
+        self.edge_types = edge_types      # e.g. {(0, 1): 4, (1, 0): 4, (1, 1): 8}
         self.batch_size = batch_size
         self.val_test_size = val_test_size
         self.num_edge_types = sum(self.edge_types.values())

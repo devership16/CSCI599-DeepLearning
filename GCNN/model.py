@@ -2,7 +2,7 @@ from collections import defaultdict
 
 import tensorflow as tf
 
-from .layers import GraphConvolutionMulti, GraphConvolutionSparseMulti, \
+from layers import GraphConvolutionMulti, GraphConvolutionSparseMulti, \
     DistMultDecoder, InnerProductDecoder, DEDICOMDecoder, BilinearDecoder
 
 flags = tf.app.flags
@@ -65,14 +65,10 @@ class DecagonModel(Model):
         self.hidden1 = defaultdict(list)
         for i, j in self.edge_types:
             self.hidden1[i].append(GraphConvolutionSparseMulti(
-                input_dim=self.input_dim, 
-                output_dim=FLAGS.hidden1,
-                edge_type=(i,j), 
-                num_types=self.edge_types[i,j],
-                adj_mats=self.adj_mats, 
-                nonzero_feat=self.nonzero_feat,
-                act=lambda x: x, 
-                dropout=self.dropout,
+                input_dim=self.input_dim, output_dim=FLAGS.hidden1,
+                edge_type=(i,j), num_types=self.edge_types[i,j],
+                adj_mats=self.adj_mats, nonzero_feat=self.nonzero_feat,
+                act=lambda x: x, dropout=self.dropout,
                 logging=self.logging)(self.inputs[j]))
 
         for i, hid1 in self.hidden1.items():
@@ -81,14 +77,10 @@ class DecagonModel(Model):
         self.embeddings_reltyp = defaultdict(list)
         for i, j in self.edge_types:
             self.embeddings_reltyp[i].append(GraphConvolutionMulti(
-                input_dim=FLAGS.hidden1, 
-                output_dim=FLAGS.hidden2,
-                edge_type=(i,j), 
-                num_types=self.edge_types[i,j],
-                adj_mats=self.adj_mats, 
-                act=lambda x: x,
-                dropout=self.dropout, 
-                logging=self.logging)(self.hidden1[j]))
+                input_dim=FLAGS.hidden1, output_dim=FLAGS.hidden2,
+                edge_type=(i,j), num_types=self.edge_types[i,j],
+                adj_mats=self.adj_mats, act=lambda x: x,
+                dropout=self.dropout, logging=self.logging)(self.hidden1[j]))
 
         self.embeddings = [None] * self.num_obj_types
         for i, embeds in self.embeddings_reltyp.items():
@@ -115,12 +107,9 @@ class DecagonModel(Model):
                     act=lambda x: x, dropout=self.dropout)
             elif decoder == 'dedicom':
                 self.edge_type2decoder[i, j] = DEDICOMDecoder(
-                    input_dim=FLAGS.hidden2, 
-                    logging=self.logging,
-                    edge_type=(i, j), 
-                    num_types=self.edge_types[i, j],
-                    act=lambda x: x, 
-                    dropout=self.dropout)
+                    input_dim=FLAGS.hidden2, logging=self.logging,
+                    edge_type=(i, j), num_types=self.edge_types[i, j],
+                    act=lambda x: x, dropout=self.dropout)
             else:
                 raise ValueError('Unknown decoder type')
 
