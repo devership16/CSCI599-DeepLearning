@@ -121,7 +121,7 @@ We have used the cross-entropy loss to optimize our model. The loss function can
 ##### $$J = \sum_{(v_i, r, v_j) \in R} J_r(i, j)$$  
 
 
-We have used negative sampling to estimate the model. For each edge type r between nodes $$v_i$$ and $$v_j$$ (positive sample), we choose another node $$v_n$$ randomly and sample the edge type $$r$$ (negative sample) between them (Mikolov et al., 2013). 
+We have used negative sampling to estimate the model. For each edge type r between nodes $$v_i$$ and $$v_j$$ (positive sample), we choose another node $$v_n$$ randomly and sample the edge type $$r$$ (negative sample) between them [16]. 
 
 The loss gradients are then propagated through the decoder and encoder, thus, performing an end-to-end optimization and jointly optimizing all the parameters.  We train our model for 50 epochs using the ADAM optimizer with a learning rate of 0.001. To initialize the weights, we use a method proposed by [17]. We also normalize the node features. We use sparse matrix multiplications due to the enormous size of the matrices which are quite sparse. We also apply dropout to the hidden layers to prevent overfitting and thus allowing the model to generalize well. 
 
@@ -282,7 +282,8 @@ systems. In Proceedings of the International Conference on Machine Learning (ICM
 13. M. Schlichtkrull, et al. Modeling relational data with graph convolutional networks. arXiv: 1703.06103, 2017.
 14. M. Nickel, et al. A three-way model for collective learning on multi-relational data. In Proceedings of the International Conference on Machine Learning (ICML), vol. 11, pp. 809–816, 2011. 
 15. T. Trouillon, et al. Complex embeddings for simple link prediction. In Proceedings of the International Conference on Machine Learning (ICML), vol. 33, pp. 2071–2080, 2016.
-16. X. Glorot, and Y. Bengio. Understanding the difficulty of training deep feedforward neural networks. In AISTATS, vol. 13. pp. 249–256, 2010.
+16. T. Mikolov, et al. Distributed representations of words and phrases and their compositionality. In NIPS, pp. 3111–3119, 2013.
+17. X. Glorot, and Y. Bengio. Understanding the difficulty of training deep feedforward neural networks. In AISTATS, vol. 13, pp. 249–256, 2010.
 
 
 
