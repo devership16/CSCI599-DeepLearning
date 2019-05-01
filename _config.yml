@@ -3,9 +3,6 @@ theme: jekyll-theme-cayman
 title: CSCI 599 - Deep Link Prediction in Graph Databases
 comments: true
 
-header:
-  image: /figure/neo4j.gif
-
 markdown: kramdown
 kramdown:
   math_engine: mathjax
