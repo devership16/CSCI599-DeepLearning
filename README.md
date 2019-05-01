@@ -60,16 +60,6 @@ For licensing reasons we had to augment the aforementioned graph to obscure any 
     <p align="center">Fig 2. Auto-encoder architecture for the Image Segmentation Model(SegNet)</p>
 </p>
 
-<p align="center">
-    <img src="figure/SegNet_train.jpeg" height="250"/>
-    <p align="center">Fig 3. Training Loss, Accuracy, Bankruptcy Recall, and Bankruptcy Precision for SegNet Model</p>
-</p>
-
-<p align="center">
-    <img src="figure/SegNet2_val.jpeg" height="250"/>
-    <p align="center">Fig 4. Validation Loss, Accuracy, Bankruptcy Recall, and Bankruptcy Precision for SegNet Model</p>
-</p>
-
 
 ### II. Graph Convolutional Neural Network Model
 Our approach to building a model using Graph Convolutional Neural Network (GCNN) to solve the multi-relational link prediction task in a multimodal finance graph had to take care of an important observation relating to the nature of the dataset. There is a huge variation in the number node pairs that the data set contains corresponding to each edge type. Therefore, it becomes important that we develop an end-to-end approach such that the model shares the parameters from different edge types. 
@@ -87,7 +77,7 @@ The input to the encoder is the nodal feature vectors $$h_i$$, and the graph $$G
 
 <p align="center">
     <img src="figure/GCN.JPG" height="450"/>
-    <p align="center">Fig 5. A two-layer multimodal network for GCNN Model with convolutions across K-hop distances</p>
+    <p align="center">Fig 3. A two-layer multimodal network for GCNN Model with convolutions across K-hop distances</p>
 </p>
 
 For a given node, the model takes into account the feature vector of its first-order neighbors. Since each neighbor can be of a different node type and can have different edge label, we have a different neural network architecture for each node. Each node type can have different lengths of embeddings; therefore, it is important that each edge type has a different set of weights. Note, an edge type is different if the node types are reversed. The convolution operators we define in the encoder uses these weights depending on the neighbors and edge types. On the successive application of these convolution operators, we essentially convolve across a K-hop distance in the graph for each neighbor. In other words, each node’s embeddings would have been formed using the information passed from all it’s Kth-order neighbors while taking into account the different edge types *(Schlichtkrull et al., 2017)*. This is depicted in fig-5, which shows convolutions around a node. A single convolution on the neural network takes the following form 
@@ -98,7 +88,7 @@ Where $$h_i^k$$ the embedding of node $$v_i$$ in the kth layer with a dimensiona
 
 <p align="center">
     <img src="figure/GCNEncoder.JPG"/>
-    <p align="center">Fig 6. Encoder Architecture for the GCNN Model</p>
+    <p align="center">Fig 4. Encoder Architecture for the GCNN Model</p>
 </p>
 
 #### GCNN Decoder  
@@ -116,7 +106,7 @@ Here, $$R$$ is a trainable weight matrix that models the global variations betwe
 
 <p align="center">
     <img src="figure/GCNDecoder.JPG"/>
-    <p align="center">Fig 7. Decoder Architecture for the GCNN Model</p>
+    <p align="center">Fig 5. Decoder Architecture for the GCNN Model</p>
 </p>
 
 #### GCNN Training  
@@ -143,6 +133,19 @@ We create batches by randomly selecting an edge type and then randomly picking e
 ### I. Image Segmentation Model (SegNet):
 
 We ran the Image segmentation model for the whole data-set and observed the following results:
+
+<p align="center">
+    <img src="figure/SegNet_train.jpeg" height="250"/>
+    <p align="center">Fig 6. Training Loss, Accuracy, Bankruptcy Recall, and Bankruptcy Precision for SegNet Model</p>
+</p>
+
+<p align="center">
+    <img src="figure/SegNet2_val.jpeg" height="250"/>
+    <p align="center">Fig 7. Validation Loss, Accuracy, Bankruptcy Recall, and Bankruptcy Precision for SegNet Model</p>
+</p>
+
+
+
 
 
    **Table 1: Results of SegNet Model for the Bankruptcy Edge**
@@ -235,6 +238,11 @@ We ran our GCN model for graphs with a different number of total nodes(10K, 20K,
     <p align="center">Fig 11. AUPRC Score for all Edge Types over varying size of graphs</p>
 </p>
 
+
+## Limitations
+
+
+## Conclusions
 We can observe that the average precision score for edge types increases as the number of nodes in the graph increases. Also, the GCNN model(**AUPRC: 0.73**) for a partial sample (30K nodes) achieves a better average precision score compared to the SegNet model(**AUPRC: 0.43**) running on the complete dataset. We can also observe that the GCNN model avoids the issue of sparsity in adjacency matrices faced by the SegNet model, by considering only connected neighbors in the graph. The GCNN model also leverages the graphical structure of our data-set by incorporating nodal features for the nodes and hence improving the results.
 
 ## References
