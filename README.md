@@ -195,7 +195,9 @@ We ran the Image segmentation model for the whole data-set and observed the foll
 
 
 
+In the above confusion matrix we see that the model performs well for most classes. The classes it does not perform well on, like Had_Funding_To, by design all had low class weights so their lower performance was to be expected. This was done to keep more emphasis on edge labels that we deemed more relevant to predicting bankruptcies given the data. We also see in the precision recall curve that the model has a precision of roughly 0.9 when you consider recall scores of 0.0-0.3. This level of precision is a terrific sign and indicates that the model provides near certain predictions on roughly 30% of the validation bankruptcy samples. Another great sign is that by smoothing the training curves for the validation loss, bankruptcy recall, and bankruptcy precision, we see monotonically improving graphs indicating that even better performance is achievable with more training. 
 
+In general however, the adjacency matrix sparsity was too much to compensate for with just class weights and this model struggled to get higher than a 0.4 AUPRC. In a typical adjacency matrix, there would be 240 nodes and roughly 20% of those nodes would be companies. Since only 0.5% of companies went bankrupt there will be roughly 1 bankrupt company per every 4 adjacency matrices. This means that out of the 240x240 cells in the adjacency matrix there is a 1 in ~200,000 chance that a cell will have the label ‘Went_Bankrupt’. 
 
 
 
