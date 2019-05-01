@@ -60,7 +60,11 @@ For licensing reasons we had to augment the aforementioned graph to obscure any 
     <img src="figure/ImageSegModel.JPG" height="250"/>
     <p align="center">Fig. 2. Auto-encoder architecture for the Image Segmentation Model(SegNet)</p>
 </p>
+
+
 #### Creating Adjacency Matrices
+
+
 The highly interconnected nature of the financial sector makes the topology of our graph very dense and several nodes that we use to segment the graph, like product verticals and locations, have degrees of tens to hundreds of thousands. Therefore, we relax the requirement to take all of a company’s edges in exchange for a "good guess" of the most relevant nodes and improved latency and memory savings. To do this we chose the approximate nearest neighbor (ANN) library ANNOY and trained a unique index for each high degree node. We created node features using a word2vec model pre-trained on the Wikipedia corpus and TFiDF to embed the words in the nodal descriptions and do a weighted sum of their vectors. We found that we needed both word2vec and TFiDF; word2vec to ensure the semantic similarity of the descriptions and TFiDF to force keyword similarities. We then appended normalized and scaled nodal features that describe the number of employees, funding, and valuation. 
 
 
@@ -68,9 +72,11 @@ To integrate ANNOY, which is C based with a python wrapper, natively into NEO4js
 
 
 #### Model Architecture
+
 We used a modified SegNet model written in Keras to map the input 3D adjacency matrices with nodal features to the output 3D adjacency matrices with class distributions. To conform SegNet to our data we changed how the data was accessed throughout the model and also prepended a convolutional layer with 32 1x1 filters. This layer allowed the model to explicitly aggregate the concatenated nodal features in a learned way before they are passed to the 3x3 kernels in the first layer of SegNet.
 
 #### Training
+
 We precomputed training samples due to neo4j and disk bottlenecks and used a Keras generator to asynchronously load them into memory during training in batch sizes of 10. For visualization and reporting we created custom precision and recall metrics and custom tensorboard logging functions. Initially we also included an early stopping callback based on validation loss, but we found that even with large patience values this would consistently stop training the model too early so we removed it. Finally, to account for the massive class imbalance due to edge sparsity in the adjacency matrix as well as bankrupt versus non-bankrupt companies, we hand tailored class weights to bias the model’s loss function and take these imbalances into account. 
 
 
