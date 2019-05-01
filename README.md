@@ -1,5 +1,7 @@
 
-# Deep Link Prediction for Graphical Database 
+# 
+## Motivation
+
 <p align="center">
     <img src="figure/graph1.gif" height="250"/>
 </p>
