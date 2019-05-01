@@ -1,5 +1,5 @@
 
-# Motivation
+## Motivation
 
 <p align="center">
     <img src="figure/graph1.gif" height="300"/>
