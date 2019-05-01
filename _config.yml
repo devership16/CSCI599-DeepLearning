@@ -1,7 +1,7 @@
 theme: jekyll-theme-cayman
 
 title: CSCI 599 - Deep Link Prediction for Graphical Database
-comments: true
+comments: false
 
 markdown: kramdown
 kramdown:
