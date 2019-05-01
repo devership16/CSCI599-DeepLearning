@@ -135,12 +135,12 @@ We create batches by randomly selecting an edge type and then randomly picking e
 We ran the Image segmentation model for the whole data-set and observed the following results:
 
 <p align="center">
-    <img src="figure/SegNet_train.jpeg" height="250"/>
+    <img src="figure/SegNet_train.jpeg" height="300"/>
     <p align="center">Fig 6. Training Loss, Accuracy, Bankruptcy Recall, and Bankruptcy Precision for SegNet Model</p>
 </p>
 
 <p align="center">
-    <img src="figure/SegNet2_val.jpeg" height="250"/>
+    <img src="figure/SegNet2_val.jpeg" height="300"/>
     <p align="center">Fig 7. Validation Loss, Accuracy, Bankruptcy Recall, and Bankruptcy Precision for SegNet Model</p>
 </p>
 
