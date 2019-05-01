@@ -285,7 +285,7 @@ Ishank Mishra					          : imishra@usc.edu
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 <style>
-.page-header { background-image: "/figure/neo4j.jpg"}
+.page-header { background-image: "figure/neo4j.jpg"}
 </style>
 
 <div id="disqus_thread"></div>
