@@ -1,5 +1,5 @@
 
-# Deep Link Prediction for Graphical Database
+# Motivation
 
 <p align="center">
     <img src="figure/graph1.gif" height="250"/>
@@ -41,10 +41,10 @@ Using CrunchBase’s enterprise API we scraped approximately 5 million nodes and
 
 <p align="center">
     <img src="figure/GraphExample.png" height="350"/>
-    <p>Fig 1: Example sub-graph containing company, people, funding rounds, and product areas. Notice the highly interconnected nature of the nodes and variety of node types. </p>
+    <p>Fig. 1. Example sub-graph containing company, people, funding rounds, and product areas. Notice the highly interconnected nature of the nodes and variety of node types. </p>
 </p>
 
-In this figure the red nodes are companies and the small multi-colored nodes connected to them represent their Jobs, Persons, Funding Rounds, etc. To store this dataset we instantiated a NEO4J database and to query it we used py2neo; a python wrapper that can call NEO4J’s JAVA based cypher query engine. 
+In Fig. 1, the red nodes are companies and the small multi-colored nodes connected to them represent their Jobs, Persons, Funding Rounds, etc. To store this dataset we instantiated a NEO4J database and to query it we used py2neo; a python wrapper that can call NEO4J’s JAVA based cypher query engine. 
 
 We collected our list of bankrupt companies using Bloomberg’s terminal API. To link the bankruptcies we found with the companies in the database we used simple string augmentation techniques like removing all co, org, corp, ltd, ect; all trailing ‘s’ characters; all spaces; and lowering all words. We choose to not use any string similarity metrics like Jaro or Levenshtein because we determined that even with a match threshold of 0.98 there was too much risk of false positives and injecting noise into our model. Using our techniques we found ~3.5k of the ~650k companies in our database had a match in the list of bankrupt companies scraped from Bloomberg. 
 
@@ -58,7 +58,7 @@ For licensing reasons we had to augment the aforementioned graph to obscure any 
 
 <p align="center">
     <img src="figure/ImageSegModel.JPG" height="250"/>
-    <p align="center">Fig 2. Auto-encoder architecture for the Image Segmentation Model(SegNet)</p>
+    <p align="center">Fig. 2. Auto-encoder architecture for the Image Segmentation Model(SegNet)</p>
 </p>
 
 
@@ -78,18 +78,18 @@ The input to the encoder is the nodal feature vectors $$h_i$$, and the graph $$G
 
 <p align="center">
     <img src="figure/GCN.JPG" height="450"/>
-    <p align="center">Fig 3. A two-layer multimodal network for GCNN Model with convolutions across K-hop distances</p>
+    <p align="center">Fig. 3. A two-layer multimodal network for GCNN Model with convolutions across K-hop distances</p>
 </p>
 
-For a given node, the model takes into account the feature vector of its first-order neighbors. Since each neighbor can be of a different node type and can have different edge label, we have a different neural network architecture for each node. Each node type can have different lengths of embeddings; therefore, it is important that each edge type has a different set of weights. Note, an edge type is different if the node types are reversed. The convolution operators we define in the encoder uses these weights depending on the neighbors and edge types. On the successive application of these convolution operators, we essentially convolve across a K-hop distance in the graph for each neighbor. In other words, each node’s embeddings would have been formed using the information passed from all it’s Kth-order neighbors while taking into account the different edge types [13]. This is depicted in fig-5, which shows convolutions around a node. A single convolution on the neural network takes the following form 
+For a given node, the model takes into account the feature vector of its first-order neighbors. Since each neighbor can be of a different node type and can have different edge label, we have a different neural network architecture for each node. Each node type can have different lengths of embeddings; therefore, it is important that each edge type has a different set of weights. Note, an edge type is different if the node types are reversed. The convolution operators we define in the encoder uses these weights depending on the neighbors and edge types. On the successive application of these convolution operators, we essentially convolve across a K-hop distance in the graph for each neighbor. In other words, each node’s embeddings would have been formed using the information passed from all it’s Kth-order neighbors while taking into account the different edge types [13]. This is depicted in Fig. 3, which shows convolutions around a node. A single convolution on the neural network takes the following form: 
 
 ##### $$h_{i}^{k+1} = \phi(\sum_r \sum_{j \epsilon N_r^i} c_r^{ij} W_r^k h_j^k + c_r^i h_i^k)$$  
 
-Where $$h_i^k$$ the embedding of node $$v_i$$ in the kth layer with a dimensionality $$d^k$$, r is an edge type and $$W_k^r$$ is a weight/parameter matrix corresponding to it, $$\phi$$ represents a non-linear activation function, $$c_r^{ij}$$ are normalization constants. A more detailed view of one convolution for the encoder is depicted in fig-6. We build a two-layer model by stacking two layers of these. The input to the first layer is the node feature vectors or one-hot vectors if the features are not present.
+Where $$h_i^k$$ the embedding of node $$v_i$$ in the kth layer with a dimensionality $$d^k$$, r is an edge type and $$W_k^r$$ is a weight/parameter matrix corresponding to it, $$\phi$$ represents a non-linear activation function, $$c_r^{ij}$$ are normalization constants. A more detailed view of one convolution for the encoder is depicted in Fig. 4. We build a two-layer model by stacking two layers of these. The input to the first layer is the node feature vectors or one-hot vectors if the features are not present.
 
 <p align="center">
     <img src="figure/GCNEncoder.JPG"/>
-    <p align="center">Fig 4. Encoder Architecture for the GCNN Model</p>
+    <p align="center">Fig. 4. Encoder Architecture for the GCNN Model</p>
 </p>
 
 #### GCNN Decoder  
@@ -98,16 +98,16 @@ The input to the decoder is a pair of node embeddings that we want to decode. We
 ##### $$p_r^{ij} = \sigma (g(v_i, r, v_j)) $$  
 
 
-The decoder is a rank-d DEDICOM tensor factorization of a 3-way tensor [14,15]. We take the embeddings of two nodes produced by the encoder, $$z_i$$ and $$z_j$$, using which the decoder then predicts if an edge type $$r$$ exists between the nodes. This is depicted in fig-7
+The decoder is a rank-d DEDICOM tensor factorization of a 3-way tensor [14,15]. We take the embeddings of two nodes produced by the encoder, $$z_i$$ and $$z_j$$, and use them as inputs to the decoder, which in turn predicts if an edge type $$r$$ exists between the nodes. This is depicted in Fig. 5. The decoder model can be mathematically described by the following equation: 
 
 ##### $$g(v_i, r, v_j) = z_i^T D_r R D_r Z_j $$  
 
 
-Here, $$R$$ is a trainable weight matrix that models the global variations between the two node types $$i$$ and $$j$$. This parameter is shared between all the edge types corresponding to the node types. The other parameter is $$D_r$$, a diagonal matrix, which are used to map local interactions for each edge type $$r$$. They model the importance of each dimension in the node embeddings towards predicting the existence of an edge type $$r$$. 
+where $$R$$ is a trainable weight matrix that models the global variations between the two node types $$i$$ and $$j$$. This parameter is shared between all the edge types corresponding to the node types. The other parameter is $$D_r$$, a diagonal matrix, which is used to map local interactions for each edge type $$r$$. It models the importance of each dimension in the node embeddings towards the prediction of the the existence of an edge type $$r$$. 
 
 <p align="center">
     <img src="figure/GCNDecoder.JPG"/>
-    <p align="center">Fig 5. Decoder Architecture for the GCNN Model</p>
+    <p align="center">Fig. 5. Decoder Architecture for the GCNN Model</p>
 </p>
 
 #### GCNN Training  
@@ -116,7 +116,7 @@ The trainable parameters of the model are
 - Weight matrix $$R$$ for mapping interaction between two node types
 - A diagonal weight matrix $$D_r$$ corresponding to each edge type. 
 
-We have used the cross-entropy loss to optimize our model. The loss function can be represented as 
+We have used the cross-entropy loss to optimize our model. The loss function can be written as: 
 
 ##### $$J_r(i, j) = -\log p_r^{ij} - \mathbb{E}_{n\sim P_r (j)} \log(1 - p_r^{in})$$
 ##### $$J = \sum_{(v_i, r, v_j) \in R} J_r(i, j)$$  
@@ -137,12 +137,12 @@ We ran the Image segmentation model for the whole data-set and observed the foll
 
 <p align="center">
     <img src="figure/SegNet_train.jpeg" height="300"/>
-    <p align="center">Fig 6. Training Loss, Accuracy, Bankruptcy Recall, and Bankruptcy Precision for SegNet Model</p>
+    <p align="center">Fig. 6. Training Loss, Accuracy, Bankruptcy Recall, and Bankruptcy Precision for SegNet Model</p>
 </p>
 
 <p align="center">
     <img src="figure/SegNet2_val.jpeg" height="300"/>
-    <p align="center">Fig 7. Validation Loss, Accuracy, Bankruptcy Recall, and Bankruptcy Precision for SegNet Model</p>
+    <p align="center">Fig. 7. Validation Loss, Accuracy, Bankruptcy Recall, and Bankruptcy Precision for SegNet Model</p>
 </p>
 
 
@@ -232,11 +232,11 @@ We ran our GCN model for graphs with a different number of total nodes(10K, 20K,
 
 <p align="center">
     <img src="figure/GCN_AUPRC_Bkrpt.PNG" height="350"/>
-    <p align="center">Fig 10. AUPRC Score for the Went_BankruptEdge over varying size of graphs </p>
+    <p align="center">Fig. 10. AUPRC Score for the Went_BankruptEdge over varying size of graphs </p>
 </p>
 <p align="center">
     <img src="figure/GCN_AUPRC_all.PNG" height="450"/>
-    <p align="center">Fig 11. AUPRC Score for all Edge Types over varying size of graphs</p>
+    <p align="center">Fig. 11. AUPRC Score for all Edge Types over varying size of graphs</p>
 </p>
 
 
