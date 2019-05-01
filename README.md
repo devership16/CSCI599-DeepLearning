@@ -239,6 +239,8 @@ We ran our GCN model for graphs with a different number of total nodes(10K, 20K,
     <p align="center">Fig. 11. AUPRC Score for all Edge Types over varying size of graphs</p>
 </p>
 
+We observe that in general, as the number of total nodes increases in the graph, the average precision score (AUPRC) increases for all the edge types.  The AUPRC score for the graph with 10K nodes is 0 as the number of nodes with the Went_Bankrupt edges is very less. As the total number of nodes increases in the graph, the number of organizations with the Went_Bankrupt edge also increases and hence the AUPRC score for the Went_Bankrupt edge also increases. We see that the graph with just 30K nodes achieves a fairly good AUPRC score of 0.73.
+
 
 ## Limitations
 The finalized graph generated after our preprocessing still had many limitations. Due to these limitations, we faced several issues while running over models which are discussed as follows. 
