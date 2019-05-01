@@ -242,7 +242,7 @@ We ran our GCN model for graphs with a different number of total nodes(10K, 20K,
 ## Limitations
 The finalized graph generated after our preprocessing still had many limitations. Due to these limitations, we faced several issues while running over models which are discussed as follows. 
 
-- Because of our graphs emphasis on early-stage companies, many companies had 90% or more NaN values since they are not yet beholden to stock owners or SEC financial reporting regulations to publicly report metrics about their financial health. We hypothesize that there is likely very little predictive signal in these nodes and that they could possibly be injecting noise or biases into our models decreasing their performance. 
+- Because of our graph's emphasis on early-stage companies, many companies had 90% or more NaN values since they are not yet beholden to stock owners or SEC financial reporting regulations to publicly report metrics about their financial health. We hypothesize that there is likely very little predictive signal in these nodes and that they could possibly be injecting noise or biases into our models decreasing their performance. 
 
 - Another shortcoming in the graph was its agnosticism to global financial metrics such as inflation, unemployment rate, GDP, ect., which could drastically affect a company's viability. For example, our models would be unaware that two potentially identical companies could have very different viabilities if one was started during the 2008 Great Recession versus today. 
 
