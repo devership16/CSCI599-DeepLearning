@@ -56,11 +56,6 @@ For licensing reasons we had to augment the aforementioned graph to obscure any 
 
 ### I. Image Segmentation Model
 
-<p align="center">
-    <img src="figure/ImageSegModel.JPG" height="250"/>
-    <p align="center">Fig. 2. Auto-encoder architecture for the Image Segmentation Model(SegNet)</p>
-</p>
-
 
 #### Creating Adjacency Matrices
 
@@ -74,6 +69,14 @@ To integrate ANNOY, which is C based with a python wrapper, natively into NEO4js
 #### Model Architecture
 
 We used a modified SegNet model written in Keras to map the input 3D adjacency matrices with nodal features to the output 3D adjacency matrices with class distributions. To conform SegNet to our data we changed how the data was accessed throughout the model and also prepended a convolutional layer with 32 1x1 filters. This layer allowed the model to explicitly aggregate the concatenated nodal features in a learned way before they are passed to the 3x3 kernels in the first layer of SegNet.
+
+
+<p align="center">
+    <img src="figure/ImageSegModel.JPG" height="250"/>
+    <p align="center">Fig. 2. Auto-encoder architecture for the Image Segmentation Model(SegNet)</p>
+</p>
+
+
 
 #### Training
 
